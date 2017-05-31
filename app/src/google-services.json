@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "305480540915",
+    "firebase_url": "https://disa-7d0d0.firebaseio.com",
+    "project_id": "disa-7d0d0",
+    "storage_bucket": "disa-7d0d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305480540915:android:a53721af5a44050c",
+        "android_client_info": {
+          "package_name": "com.example.korku02.disa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305480540915-5qq4nnuf5rcl0i35s504s4rih30tbptu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAza0vWU_T6har5Nfxb-X_E777-kqBkxn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
