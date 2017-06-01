@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
+    private TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,12 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
-
+        textViewLogin = (TextView) findViewById(R.id.textViewLogin);
         progressDialog = new ProgressDialog(this);
 
         //attaching listener to button
         buttonSignup.setOnClickListener(this);
+        textViewLogin.setOnClickListener(this);
 
 
 
@@ -87,8 +90,9 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                         if(task.isSuccessful()){
                             //display some message here
                             Toast.makeText(Signup.this,"Successfully registered",Toast.LENGTH_LONG).show();
-                            finish();
+
                             startActivity(new Intent(getApplicationContext(), getInformation.class));
+                            finish();
                         }else{
                             //display some message here
                             Toast.makeText(Signup.this,"Registration Error",Toast.LENGTH_LONG).show();
@@ -102,7 +106,17 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        //calling register method on click
-        registerUser();
+        if(view == buttonSignup){
+            //calling register method on click
+            registerUser();
+        }
+
+        if(view == textViewLogin){
+            startActivity(new Intent(getApplicationContext(), login.class));
+
+        }
+
     }
+
+
 }

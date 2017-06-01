@@ -8,6 +8,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,7 @@ public class feedback extends AppCompatActivity implements View.OnClickListener{
     private Button buttonSubmit ;
     private String dateString;
     private String timeString;
+    private RatingBar ratingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +57,11 @@ public class feedback extends AppCompatActivity implements View.OnClickListener{
 
         submitRating = (EditText) findViewById(R.id.submitRating);
         buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         //add listner to button
         buttonSubmit.setOnClickListener(this);
+
 
 
 
@@ -66,7 +70,10 @@ public class feedback extends AppCompatActivity implements View.OnClickListener{
     private void saveFeedback() {
 
         //Getting values from database
-        String rating = submitRating.getText().toString().trim();
+        //String rating = submitRating.getText().toString().trim();
+        String rating1 =String.valueOf(ratingBar.getRating());
+
+        String rating = rating1.trim();
         //creating a userinformation object
         feedbackData data = new feedbackData(rating);
 
