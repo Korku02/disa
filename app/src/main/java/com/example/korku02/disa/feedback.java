@@ -26,9 +26,11 @@ public class feedback extends AppCompatActivity implements View.OnClickListener{
     private DatabaseReference databaseReference;
     private EditText submitRating;
     private Button buttonSubmit ;
-    private String dateString;
+    private String datetimeString;
     private String timeString;
+    private String dateString;
     private RatingBar ratingBar;
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,22 +83,59 @@ public class feedback extends AppCompatActivity implements View.OnClickListener{
         FirebaseUser user = firebaseAuth.getCurrentUser();
         //sending information to database
 
+
+        //timestamp from system
         Long tsLong = System.currentTimeMillis();
         String ts = tsLong.toString();
+
         long millisecond = Long.parseLong(ts);
         // or you already have long value of date, use this instead of milliseconds variable.
-        dateString = DateFormat.format("MM-dd-yyyy", new Date(millisecond)).toString();
+        datetimeString = DateFormat.format("MM-dd-yyyy hh:mm:ss a", new Date(millisecond)).toString();
+        timeString = datetimeString.substring(11);
+        dateString = datetimeString.substring(0,10);
+
+        String t1  = datetimeString.substring(11,13);
+        String t2 = datetimeString.substring(20,21);
+
+
+        int st1 = Integer.parseInt(t1);
+
+
+        if((st1 >=1 && st1<=3 && t2.equals("p")) || (st1 ==11 && t2.equals("a")) || (st1 ==12 && t2.equals("p"))){
+            String type = "Lunch";
+
+            databaseReference.child("Hostels/"+hostel+"/"+dateString+"/"+username+"/"+type).setValue(data);
+            //displaying a success toast
+            Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
+        }
+
+        else if((st1 >=6 && st1<=10 && t2.equals("a"))){
+            String type = "Breakfast";
+
+            databaseReference.child("Hostels/"+hostel+"/"+dateString+"/"+username+"/"+type).setValue(data);
+            //displaying a success toast
+            Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
+        }
+
+        else if((st1 >=6 && st1<=10 && t2.equals("p"))) {
+
+                String type = "Dinner";
+
+            databaseReference.child("Hostels/"+hostel+"/"+dateString+"/"+username+"/"+type).setValue(data);
+            //displaying a success toast
+            Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
+        }
+
+        else{
+            Toast.makeText(this, "No meal is going on Right now", Toast.LENGTH_LONG).show();
+        }
+
+       // String id = databaseReference.push().getKey();
 
 
 
-        String id = databaseReference.push().getKey();
 
 
-
-        //databaseReference.child("Hostels/Nilgiri/Date/Deepak Korku/Dinner").setValue(data);
-        databaseReference.child("Hostels/"+hostel+"/"+dateString+"/"+username+"/Lunch").setValue(data);
-        //displaying a success toast
-        Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
 
 
 

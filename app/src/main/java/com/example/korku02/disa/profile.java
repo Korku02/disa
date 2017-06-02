@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +36,8 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
     private TextView editTextUserName, editTextUserHostel;
 
     private Button buttonScanner;
+    private ProgressBar progressBarProfile;
+
 
 
 
@@ -69,6 +72,8 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         editTextUserHostel = (TextView) findViewById(R.id.editTextUserHostel);
         editTextUserName = (TextView) findViewById(R.id.editTextUserName);
         buttonScanner = (Button) findViewById(R.id.buttonScanner);
+        progressBarProfile = (ProgressBar) findViewById(R.id.progressBarProfile);
+
 
 
 
@@ -85,6 +90,8 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         buttonLogout.setOnClickListener(this);
 
         buttonScanner.setOnClickListener(this);
+
+
 
     }
 
@@ -103,15 +110,14 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
 
 
                 //Adding it to a string
-                String userName = "Name: "+person.getName();
-                if(userName == null){
-                    userName = " ";
-                }
-                String userHostel = "Address: "+person.getHostel();
+                String userName = person.getName();
+                String userHostel = person.getHostel();
+                progressBarProfile.setVisibility(View.GONE);
 
-                if(userHostel == null){
-                    userHostel = " ";
-                }
+
+
+
+
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 //displaying logged in user name
                 textViewUserEmail.setText("Welcome " + person.getName());

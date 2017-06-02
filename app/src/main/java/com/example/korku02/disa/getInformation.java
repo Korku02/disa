@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +27,7 @@ public class getInformation extends AppCompatActivity implements View.OnClickLis
     private EditText editTextHostelName, editTextName;
     private Button buttonSubmitInformation;
     private Button buttonLogout;
+    private Spinner spinnnerHostel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +59,11 @@ public class getInformation extends AppCompatActivity implements View.OnClickLis
         databaseReference = FirebaseDatabase.getInstance().getReference(uid);
 
         //getting the views from xml resource
-        editTextHostelName = (EditText) findViewById(R.id.editTextHostelName);
+
         editTextName = (EditText) findViewById(R.id.editTextName);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonSubmitInformation = (Button) findViewById(R.id.buttonSubmitInformation);
+        spinnnerHostel = (Spinner)findViewById(R.id.spinnerHostel);
 
         //adding listener to button
         buttonLogout.setOnClickListener(this);
@@ -75,10 +78,10 @@ public class getInformation extends AppCompatActivity implements View.OnClickLis
 
         //Getting values from database
         String name = editTextName.getText().toString().trim();
-        String add = editTextHostelName.getText().toString().trim();
+        String hostel = spinnnerHostel.getSelectedItem().toString().trim();
 
         //creating a userinformation object
-        UserInformation userInformation = new UserInformation(name, add);
+        UserInformation userInformation = new UserInformation(name, hostel);
 
         //getting the current logged in user
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -91,7 +94,7 @@ public class getInformation extends AppCompatActivity implements View.OnClickLis
         //displaying a success toast
         Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
 
-        editTextHostelName.setText("");
+
         editTextName.setText("");
 
 
@@ -114,6 +117,7 @@ public class getInformation extends AppCompatActivity implements View.OnClickLis
             saveUserInformation();
 
             startActivity(new Intent(this, profile.class));
+            finish();
         }
 
     }

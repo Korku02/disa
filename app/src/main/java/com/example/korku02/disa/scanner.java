@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +22,6 @@ import com.google.zxing.integration.android.IntentResult;
 public class scanner extends AppCompatActivity implements View.OnClickListener{
     //View Objects
     private Button buttonScan;
-    private TextView textViewName, textViewAddress;
     private static String TAG;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
@@ -42,8 +40,7 @@ public class scanner extends AppCompatActivity implements View.OnClickListener{
         //View objects
         buttonScan = (Button) findViewById(R.id.buttonScan);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        textViewName = (TextView) findViewById(R.id.textViewName);
-        textViewAddress = (TextView) findViewById(R.id.textViewAddress);
+
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
@@ -69,8 +66,6 @@ public class scanner extends AppCompatActivity implements View.OnClickListener{
                     //converting the data to json
                    // JSONObject obj = new JSONObject(result.getContents());
                     //setting values to textviews
-                    textViewName.setText(result.getContents());
-                    textViewAddress.setText(result.getContents());
                     Log.d(TAG,result.getContents()+"     "+getIntent().getExtras().getString("hostel"));
                 //initializing firebase authentication object
                 firebaseAuth = FirebaseAuth.getInstance();

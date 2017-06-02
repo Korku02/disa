@@ -11,6 +11,15 @@
         <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9e0044a337553c5ddb644e4b893597047cc53f31/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/8579db308737741b0f048ee75c38cf98f3947855/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_72f29e7a7fd467ef27e070a222b5dfb1e78005cb.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
@@ -18,6 +27,168 @@
         revision="25.0.3"
         sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
         <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_097e4b5c10faba117cf918659ffed4e129a9857a/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2_9966e1df7a79840611c941c45a736683a7e483a3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/a3503b4b47ec29e8bce25f90b57acf993a67245b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="900a290779cdb4eb2e63b6f7806fd9f30ce4f60d">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_590ef1ecd01d15cf93b734728e3041476fc83e83.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/fd71f1873cd66e0904adc12a0020c128b793ecf9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_f7679ec2d4df5340d0d4c1e979e269ec8362e765.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/e729da2ba02136da3a04508bc7584070393b94ca/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_000f3a605459669362b695817afa552fcb56f4bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/core-3.2.1_e79a9c31199ce850f25812ff054842db6ef6432f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/2374562329f3fe5d279b564fa0cf4ed790af2e48/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0e1f104cf60bfe34147ef670229f2635789c79a4">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_5fdd5d0e270f6c765ae271553b6c0a57e14c5604.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/1a6472c165f68880418fc502c7b1eaf5a7a3a0e2/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_96008429642f0c61a86697cf1caf18831839e3ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2_e60688a0b431aa570787966e0a20e180b506be41.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/korku02/.android/build-cache/a5fc498991d3f09eb53d457a5ce9f94df652f01e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f7061dba832b6e7bd34b5debeaa2b46412d59e83/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2_208ba283aada833aac7838a42857f2ab76e1d0eb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.4.0/558e074f136fee609b8758480ecd00e286595137/firebase-client-jvm-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="558e074f136fee609b8758480ecd00e286595137">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.4.0_12d13643eb5cdf277b0069cd572b8672193c42ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/d408d2b308e3ef665823da61424479267b625dd1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_9337882ad66e92dc0ec23d0007428f3bee26e98a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/d36e6509af1af2c7c3ba5fd33249b0bc40664952/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="de24d8023e8da79f30bee46b298f606e5e758432">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_8eb93cbd9723fbce1a7bcb0cce001a07dc56af4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/d3efb060f629233cfd0f808bce478186e6e6d5d3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_f875696dc52070799409fcbfdef2ff256237c1a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/6029a5ae11947f01d2b56a53586f21719d38ff36/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_beeb02df989595c649b75e1cfeb777fa30ac9fe6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12_12e36f7d68a6b098e98b627bf28f18c5959229fb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.android/build-cache/805a60f21133474aa56082822577c26a67c54122/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/classes_8bdc2708e11c86a1d6c50da0b849e7157d3227b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/korku02/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.4.0/f00bc767918ad9c89e5c13e25706d033a58e13c2/firebase-client-android-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f00bc767918ad9c89e5c13e25706d033a58e13c2">
+        <dex dex="/Users/korku02/AndroidStudioProjects/Disa/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.4.0_f9dcf1fd569d9421bf8b2f796b1e3543b1fd0561.jar" />
     </item>
 
 </items>

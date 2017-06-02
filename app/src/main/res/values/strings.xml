@@ -15,4 +15,21 @@
     <string name="title_activity_get_information">getInformation</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <array name="hostels_name">
+        <item>Nilgiri</item>
+        <item>Karakoram</item>
+        <item>Aravali</item>
+        <item>Jwala</item>
+        <item>Kumaon</item>
+        <item>Vindhyachal</item>
+        <item>Shivalik</item>
+        <item>Zanskar</item>
+        <item>Satpura</item>
+        <item>Udaigiri</item>
+        <item>Girnar</item>
+        <item>Kailash</item>
+        <item>Himadiri</item>
+
+    </array>
 </resources>
