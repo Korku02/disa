@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#12D374 </color>
+    <color name="colorPrimaryDark">#2ca058</color>
+    <color name="colorAccent">#c3efd4</color>
+    <color name="colorSteelGrey">#40444C </color>
+    <color name="colorSteelGreyDark">#2e3138</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWaikawaGrey">#6B7198</color>
+    <color name="colorSolitude">#E8EBEE</color>
+    <color name="colorTaupeGrey">#8D8289</color>
+    <color name="colorSpunPearl">#A1A1A4 </color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorAluminium">#7d9a91</color>
+    <color name="colorNevada">#424142</color>
+    <color name="colorSnow">#F9F9F9</color>
+
 </resources>

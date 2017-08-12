@@ -1,0 +1,197 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="iitd.messfeeback.myapplication.profile"
+    android:background="@color/colorSteelGrey"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSteelGrey">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorSteelGrey"
+            >
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/circlecard"
+                android:id="@+id/mainCard"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorNevada"
+                    android:textSize="30dp"
+                    android:id="@+id/editTextUsername"
+                    android:fontFamily="sans-serif"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hostel Name"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/colorSteelGrey"
+                    android:textSize="20dp"
+                    android:id="@+id/editTextHostelname"
+                    android:layout_centerHorizontal="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entry No"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/colorWaikawaGrey"
+                    android:textSize="18dp"
+                    android:id="@+id/editTextUserid"
+                    android:layout_centerHorizontal="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hostel Name"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp"
+                    android:id="@+id/editTextUseremail"
+                    android:layout_centerHorizontal="true"
+                    />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp"
+                android:id="@+id/cardView"
+                android:background="@drawable/circlecard"
+                android:layout_below="@+id/mainCard"
+                android:orientation="horizontal"
+                >
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="LastFeedback"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/colorNevada"
+                        android:id="@+id/lastfeed"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Date | Type"
+                        android:textSize="16dp"
+                        android:id="@+id/lastFeedbackDateType"
+                        android:gravity="center"
+                        android:textColor="@color/colorSteelGrey"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="60dp"
+                        android:text="Rating : 5"
+                        android:textSize="20dp"
+                        android:id="@+id/lastFeedbackRating"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+
+                </RelativeLayout>
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp"
+                android:id="@+id/cardLastAttendance"
+                android:background="@drawable/circlecard"
+                android:layout_below="@+id/mainCard"
+                android:orientation="horizontal"
+                >
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="Last Meal"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/colorNevada"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Date"
+                        android:textSize="16dp"
+                        android:id="@+id/lastAttendanceDate"
+                        android:gravity="center"
+                        android:textColor="@color/colorSteelGrey"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="60dp"
+                        android:text="Type"
+                        android:textSize="20dp"
+                        android:id="@+id/lastAttendanceType"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimary"
+                        />
+
+                </RelativeLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

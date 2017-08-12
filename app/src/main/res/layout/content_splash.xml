@@ -5,28 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.korku02.disa.splash"
+    tools:context="iitd.messfeeback.myapplication.Splash"
     tools:showIn="@layout/activity_splash"
-    android:background="@drawable/gradient">
+    android:padding="16dp"
+    android:background="@drawable/gradient2">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="260dp"
         android:text="Mess Feedback App"
-        android:textSize="30dp"
-        android:textColor="#ffffff"
-        android:fontFamily="sans-serif-light"/>
+        android:textSize="42dp"
+        android:gravity="center"
+        android:textColor="@color/colorNevada"/>
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/laptop"
-        android:layout_marginTop="62dp"
-        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/m"
+        android:layout_marginBottom="220dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
