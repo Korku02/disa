@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String REGISTER_URL = "http://10.17.5.66:8080//api/register/";
+    public static final String REGISTER_URL = "http://10.17.5.66:8080/register/";
 
     public static final String USER_NAME = "user_name";
     public static final String PASSWORD = "password";
@@ -90,7 +90,8 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(Signup.this,response,Toast.LENGTH_LONG).show();
+//                        Toast.makeText(Signup.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(Signup.this,"successfully registered",Toast.LENGTH_LONG).show();
 
                         if(response !=null ){
                             startActivity(new Intent(getApplicationContext(), userlogin.class));
@@ -101,7 +102,9 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Signup.this,error.toString(),Toast.LENGTH_LONG).show();
+//                        Toast.makeText(Signup.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(Signup.this,"Please connect to wifi",Toast.LENGTH_LONG).show();
+
                     }
                 }){
             @Override

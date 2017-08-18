@@ -3,6 +3,8 @@ package iitd.messfeeback.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     private TextView messType;
     public static String messType1;
     public static Boolean Mess;
+    Context context = this;
 
 
 
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new profile()).commit();
         }
+
 
 
 
@@ -176,26 +180,25 @@ public class MainActivity extends AppCompatActivity
 
 
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//
-//
-//    }
-
-
-//
-//    protected void insertIntoDB(){
-//        if(accesstoken.equals("") || useremail.equals("")){
-//            Toast.makeText(getApplicationContext(),"Bad response from backend", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-//
-//        String query = "INSERT INTO persons (accesstoken,email) VALUES('"+accesstoken+"', '"+useremail+"');";
-//        db.execSQL(query);
-//        Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+//                System.out.println("connected to wifi");
+//                Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                // connected to the mobile provider's data plan
+//                System.out.println("Please connect to wifi");
+                Toast.makeText(context, "Switch to IITD/edurom wifi from Mobile Data", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // not connected to the internet
+            Toast.makeText(context, "Please connect to IITD/edurom wifi", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -410,7 +413,8 @@ public class MainActivity extends AppCompatActivity
 
                 String hostel = sharedPreferences.getString(Config.KEY_HOSTEL,"Not Available");
                 System.out.println("deepak feedback");
-                if(result.getContents().equals(hostel) && Mess && !giveAttendance){
+//                if(result.getContents().equals(hostel) && Mess && !giveAttendance){
+                if(result.getContents().equals(hostel) && Mess){
                     System.out.println("deepak feedback");
                     startActivity(new Intent(this, submitRating.class));
                 }
@@ -420,7 +424,7 @@ public class MainActivity extends AppCompatActivity
                     submitAttendance();
                 }
                 else{
-                    Toast.makeText(this, "Either you are not resident of"+ " "+ result.getContents() +"or No meal right now", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Either you are not resident of"+ " "+ result.getContents() +" or No meal right now", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(this, MainActivity.class));
                 }
             }

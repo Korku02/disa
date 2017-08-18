@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String LOGIN_URL = "http://10.17.5.66:8080//api/login/";
+    public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
 
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
@@ -60,8 +60,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "RIND1Pt1yjoOJUP26W0LWd0MCouLiHUEwQy263FT";
-    private String client_secret = "Lrbccou1g729W9ftJkw5zO4qaWVDivRzI0ACMbHnViQJhpr1tEwQD3qJV1N1n9t6KNS38LyUgRAotHT4Pd8d19k2ft3GRpj0husGzXqhfCfjEdaNMvCplT1Rbu5V77dc";
+    private String client_id = "5aR3S6Y3rFOJ0793DsmbLDLfYJHp7K9Wb0Pknegu";
+    private String client_secret = "msPUDtanIPnw4Y1daTPoE9WZrlIdnlhhqXybUpfJUcjvxy7BTH6KJLYucp10Ay13zG55AqVvs62AyLCeLklok4nDzHf4inORMHU2l5ybOpatnHrOFV9coDRCDF6yWOGZ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +114,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
 
 
     private void userLogin() {
+
         email = editTextEmail.getText().toString().trim();
         password = editTextPassword.getText().toString().trim();
         // these two lines are for testing purposed delete after your activity
@@ -125,7 +126,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                     @Override
                     public void onResponse(String response) {
                         progressDialog.setMessage("Please Wait...");
-                        progressDialog.show();
+
 //                        int status=json
 //                        System.out.println("korku"+response);
 //                        if(response.trim().equals("success")){
@@ -144,6 +145,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             String name = jObj.getString("name");
                             String hostel = jObj.getString("hostel");
                             String id = jObj.getString("id");
+                            progressDialog.dismiss();
 
 
 
@@ -188,7 +190,15 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(userlogin.this,error.toString(),Toast.LENGTH_LONG ).show();
+//                        System.out.println(error.toString());
+                        String connection_error = "com.android.volley.NoConnectionError: java.net.ConnectException: failed to connect to /10.17.5.66 (port 8080) after 2500ms: isConnected failed: ECONNREFUSED (Connection refused)";
+                        if(error.toString().equals(connection_error)){
+                            Toast.makeText(userlogin.this,"Please connect to IITD Wifi",Toast.LENGTH_LONG ).show();
+                        }
+                        else{
+                            Toast.makeText(userlogin.this,"Please check username or password",Toast.LENGTH_LONG ).show();
+                        }
+
                     }
                 }){
             @Override

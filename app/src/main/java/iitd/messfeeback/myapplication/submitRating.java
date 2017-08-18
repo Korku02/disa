@@ -165,10 +165,15 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+//                        JSONObject errorObj = new JSONObject(error);
+                        System.out.println(error);
+                        System.out.println("error feedback");
                         Toast.makeText(submitRating.this,"Feedback is already completed for corresponding field.",Toast.LENGTH_LONG ).show();
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
                         System.out.println("Deepak Korku no meal");
+                        System.out.println(token);
                     }
                 }){
             @Override
@@ -178,6 +183,7 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                 params.put(RATING,rating);
                 params.put(MEAL_TYPE, messType1);
                 return params;
+
             }
 
             @Override
