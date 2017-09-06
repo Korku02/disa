@@ -3,21 +3,192 @@
 
     <item
         is-multidex="true"
-        jar="/Users/korku02/AndroidStudioProjects/MyApplication/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/home/godara01/.android/build-cache/037cbb6f1f093432bd2846c298a25f409ba08ee5/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="3a752c2577aacc3b2244b47c8ec032d12dc3a49c">
-        <dex dex="/Users/korku02/AndroidStudioProjects/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_152eee8357bbe976066472feda91742b18c13ad0/classes.dex" />
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_acaeadc434d03644b71441b814fda35c419a2cfb/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/korku02/AndroidStudioProjects/MyApplication/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/home/godara01/.android/build-cache/2515ba9a279edf94d6c0bc283aca26d907189f23/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/korku02/AndroidStudioProjects/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_beaaf25f0c8b13247438633daa74abfd4556fc25/classes.dex" />
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0f3c1510c9a86ead71812931f8325a249ae2faba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/f3d93b56948cc43dd020f0cda1e09de12dddfe5f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_db811ab3247ba3acfe44c7b0b74dc132503b29c0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/4b503846d185afa44df730dfd7c3d845b025dd3a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cd7c63500c762118fc82887ded7a4be6a5bb3830/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/Documents/disa/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c6e1bce459cacd5b42ccc8cb83597ff284600d34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/02df03c4f170783484931c410d7f36ffd572cb53/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0e1f104cf60bfe34147ef670229f2635789c79a4">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5d2786033b0acac5da1babba969b010d32f525f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/b41b526439999d28396d79f7fa0556754894ba6c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_49186f44e4dea1dca24c92616847ea48a5bb355d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/ba49a68c38f9e1fb2afac0c1af14e3058512ae1a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1c2009174b0275176ae19b906d488d1e93f1064a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_741880a854dcf33ce6aff165d8c4a5e86f5f9919/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/76dcad34a6c33f3565800839672e47ce74a023cd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9687b1521e4396f3e55827ddbfc907fc1f68e5ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/6a9f87655d2e361c7804e4602af58829b4b30598/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_af23893fa3ab61e138af1aada26b4f2536517302/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/85f0a176459a4fd1512245b7b5f52932b654b1d5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_830a281111675c88bca4cd714b554b84b6416636/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/42d9602f046365b3ebf17fbe83ba4aab4cc9f74f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ca6452556816f746dd2c94a8cd4c1c2c80008e02/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/Documents/disa/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6998db38ce8f9848960fdf3882d03058575df693">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_932a759a2c2e79c91bf031a22051fc12c31c601f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/core-3.2.1_71558361a11f84e1ef8e0b0e5c118dd5e9137881/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/d812b36ce8f54d4dc05554918ce412660c872884/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7b7422a2e5a6105517ddfea0f08935064d322a29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/007d80662a449007cdeb5f67b8f0ab07ae6e241f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2d51b56f11a61ffc4091a0f74dfeaeabaa898454/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/3248b14414989403b4b9e528654ed01bc2e1a7ac/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_842238fa3470cf6743087c3cea2c8e05f6e9bfe8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/9d547ad302e0b0b4df42f9be20e225c8b04535a3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c9926d028849d50c64ce8d3485c2afd8c3f5044e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/.android/build-cache/7c12a829c57c728df38f0ac9fe9a3eac0e70a10c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c6ae78eaae2ba59210596aba68d4633e1c54584f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/godara01/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/godara01/Documents/disa/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_3c4f231c68e8eddae0f29602ff1669f0b1be7cfc/classes.dex" />
     </item>
 
 </items>
