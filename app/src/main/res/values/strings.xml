@@ -26,7 +26,8 @@
     <string name="scan_qr">Scan Qr Code</string>
     <string name="mess_type">Meal Type</string>
     <string name="submit_feedback">Submit</string>
-
+    <string name="not_connected">Please connect to IITD/eduroam Wifi</string>
+    <string name="connect">Connect</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -52,4 +53,5 @@
     <string name="title_activity_succesful_attendance">succesfulAttendance</string>
     <string name="title_activity_successfull_feedback">successfullFeedback</string>
     <string name="title_activity_successful_feedback">successfulFeedback</string>
+    <string name="title_activity_wifi_connect">wifiConnect</string>
 </resources>

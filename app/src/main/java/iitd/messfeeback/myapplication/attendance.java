@@ -80,6 +80,7 @@ public class attendance extends Fragment implements View.OnClickListener {
         if(view == buttonAttendanceScan){
             giveAttendance = TRUE;
             qrScan.initiateScan();
+            System.out.println(giveAttendance);
 
         }
     }

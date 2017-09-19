@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -58,9 +59,20 @@ public class profile extends Fragment {
         editTextUseremail = (TextView) getActivity().findViewById(R.id.editTextUseremail);
         lastFeedbackDateType = (TextView) getActivity().findViewById(R.id.lastFeedbackDateType);
         lastFeedbackRating = (TextView) getActivity().findViewById(R.id.lastFeedbackRating);
-        lastAttendanceDate = (TextView) getActivity().findViewById(R.id. lastAttendanceDate);
-        lastAttendanceType = (TextView) getActivity().findViewById(R.id. lastAttendanceType);
+        lastAttendanceDate = (TextView) getActivity().findViewById(R.id.lastAttendanceDate);
+        lastAttendanceType = (TextView) getActivity().findViewById(R.id.lastAttendanceType);
 
+        LinearLayout lastattendance=(LinearLayout) getActivity().findViewById(R.id.cardLastAttendance);
+        LinearLayout lastfeedback=(LinearLayout) getActivity().findViewById(R.id.cardlastFeedback);
+        if(feedbackRating == "Not Available"){
+            lastfeedback.setVisibility(LinearLayout.GONE);
+        }
+        if(attendanceDate == "Not Available"){
+            lastattendance.setVisibility(LinearLayout.GONE);
+        }
+        if(attendanceDate != "Not Available" && feedbackRating == "Not Available"){
+            lastattendance.setVisibility(LinearLayout.GONE);
+        }
         Typeface mont_bold = Typeface.createFromAsset(getActivity().getAssets(), "font/Montserrat-Bold.ttf");
         Typeface mont_med =Typeface.createFromAsset(getActivity().getAssets(), "font/Montserrat-Medium.ttf");
         Typeface mont_light =Typeface.createFromAsset(getActivity().getAssets(), "font/Montserrat-Light.ttf");
@@ -76,6 +88,8 @@ public class profile extends Fragment {
         lastFeedbackRating.setText("Rating: "+ feedbackRating);
         lastAttendanceType.setText(attendanceType.toUpperCase());
         lastAttendanceDate.setText(attendanceDate.substring(0,10));
+
+
 
 
     }

@@ -86,7 +86,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="30dp"
-                android:id="@+id/cardView"
+                android:id="@+id/cardlastFeedback"
                 android:background="@drawable/circlecard"
                 android:layout_below="@+id/mainCard"
                 android:orientation="horizontal"

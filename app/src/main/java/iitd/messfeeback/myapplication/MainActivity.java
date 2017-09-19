@@ -1,5 +1,7 @@
 package iitd.messfeeback.myapplication;
 
+import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +20,7 @@ import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +46,7 @@ import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static final String SUBMIT_URL = "http://10.17.5.66:8080/api/attendance/";
+    public static final String SUBMIT_URL = "http://192.168.43.184:8080/api/attendance/";
 
     public static final String HOSTEL = "hostel";
     public static final  String ATTENDANCE = "attendance";
@@ -58,7 +61,10 @@ public class MainActivity extends AppCompatActivity
     private TextView messType;
     public static String messType1;
     public static Boolean Mess;
+    public Button wifi_button;
+    private Boolean exit = false;
     Context context = this;
+
 
 
 
@@ -72,6 +78,8 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new profile()).commit();
         }
+
+
 
 
 
@@ -120,6 +128,7 @@ public class MainActivity extends AppCompatActivity
         View headerView= navigationView.getHeaderView(0);
         editTextUsername = (TextView) headerView.findViewById(R.id.editTextUsername);
         editTextUseremail = (TextView) headerView.findViewById(R.id.editTextUseremail);
+
 
 
         editTextUsername.setText(name);
@@ -179,10 +188,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+    public void checkWifi(){
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null) { // connected to the internet
@@ -192,12 +198,54 @@ public class MainActivity extends AppCompatActivity
             } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
                 // connected to the mobile provider's data plan
 //                System.out.println("Please connect to wifi");
-                Toast.makeText(context, "Switch to IITD/edurom wifi from Mobile Data", Toast.LENGTH_SHORT).show();
+                // custom dialog
+
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.wifidialog);
+
+
+                try
+                {
+                    Thread.sleep(2000);//1sec
+                    dialog.show();
+                    wifi_button = (Button)dialog.findViewById(R.id.wifi_button);
+                    wifi_button.setOnClickListener(new View.OnClickListener() // the error is on this line (specifically the .setOnClickListener)
+                    {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            System.out.println("wifi_button_clicked");
+//                            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                            // TODO Auto-generated method stub
+                            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                            final ComponentName cn = new ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings");
+                            intent.setComponent(cn);
+                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                            dialog.dismiss();
+                            startActivity(intent);
+
+                        }
+                    });
+                }
+                catch(InterruptedException ex)
+                {
+                    ex.printStackTrace();
+                }
+
+//                Toast.makeText(context, "Switch to IITD/edurom wifi from Mobile Data", Toast.LENGTH_SHORT).show();
             }
         } else {
             // not connected to the internet
             Toast.makeText(context, "Please connect to IITD/edurom wifi", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkWifi();
+
     }
 
     @Override
@@ -208,6 +256,23 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+
+        finish();
+
+//        if (exit) {
+//            finish(); // finish activity
+//        } else {
+//            Toast.makeText(this, "Press Back again to Exit.",
+//                    Toast.LENGTH_SHORT).show();
+//            exit = true;
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    exit = false;
+//                }
+//            }, 1000);
+//
+//        }
     }
 
     @Override
@@ -352,17 +417,24 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this,"You may have already updated the attendance",Toast.LENGTH_LONG ).show();
-                        System.out.println("Deepak Korku no meal");
+
+                        try {
+                            String errorString = new String(error.networkResponse.data);
+                            JSONObject errorObj = new JSONObject(errorString);
+                            String errorMessage = errorObj.getString("error");
+                            Toast.makeText(MainActivity.this,errorMessage,Toast.LENGTH_LONG ).show();
+                        }
+                        catch (Exception e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(MainActivity.this,"Connection error",Toast.LENGTH_LONG ).show();
+
+                        }
+//
+//                        System.out.println("Deepak Korku no meal");
                     }
                 }){
-//            @Override
-//            public Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<String,String>();
-//                params.put(HOSTEL,hostel);
-//                params.put(ATTENDANCE,"True");
-//                params.put(MEAL_TYPE, messType1);
-//                return params;
+
 
             SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
@@ -413,14 +485,16 @@ public class MainActivity extends AppCompatActivity
 
                 String hostel = sharedPreferences.getString(Config.KEY_HOSTEL,"Not Available");
                 System.out.println("deepak feedback");
-//                if(result.getContents().equals(hostel) && Mess && !giveAttendance){
-                if(result.getContents().equals(hostel) && Mess){
-                    System.out.println("deepak feedback");
+                if(result.getContents().equals(hostel) && Mess && !giveAttendance){
+//                if(result.getContents().equals(hostel) && Mess){
+                    System.out.println("giveAttendane1");
+                    System.out.println(giveAttendance);
                     startActivity(new Intent(this, submitRating.class));
                 }
 
                 else if(result.getContents().equals(hostel) && Mess && giveAttendance){
-                    System.out.println("deepak give attendance");
+                    System.out.println("giveAttendane1");
+                    System.out.println(giveAttendance);
                     submitAttendance();
                 }
                 else{
@@ -432,4 +506,13 @@ public class MainActivity extends AppCompatActivity
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+//    @Override
+//    public void onClick(View v) {
+//
+//        if(v == wifi_button){
+//            System.out.println("wifi_button_clicked");
+////            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+//        }
+//    }
 }

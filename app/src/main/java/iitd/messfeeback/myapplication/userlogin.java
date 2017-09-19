@@ -1,10 +1,14 @@
 package iitd.messfeeback.myapplication;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,7 +36,7 @@ import java.util.Map;
  */
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
+    public static final String LOGIN_URL = "http://192.168.43.184:8080/login/";
 
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
@@ -53,6 +57,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private TextView textViewSignup;
     private TextView textViewLogin;
     private  TextView  loginSubHeading;
+    private Button wifi_button;
+    Context context = this;
 
     //progress dialog
     private ProgressDialog progressDialog;
@@ -60,8 +66,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "5aR3S6Y3rFOJ0793DsmbLDLfYJHp7K9Wb0Pknegu";
-    private String client_secret = "msPUDtanIPnw4Y1daTPoE9WZrlIdnlhhqXybUpfJUcjvxy7BTH6KJLYucp10Ay13zG55AqVvs62AyLCeLklok4nDzHf4inORMHU2l5ybOpatnHrOFV9coDRCDF6yWOGZ";
+    private String client_id = "luUBib80DtKimx2SFhDsZIgdzT9SeO0pMRdRskL6";
+    private String client_secret = "DyoDfiim0PMkvFH2uWK616XTexYVKzLDn1y3hc4LKBAIMGyiU2CJ2WpdX2O3cj43t9jtbWIaW9bLJ3sYvYQ8wACh9BPCTWNbLOwV3ycEVEUfBYnkG23RH5XhUgFrFIpT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +118,64 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    public void checkWifi(){
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+//                System.out.println("connected to wifi");
+//                Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                // connected to the mobile provider's data plan
+//                System.out.println("Please connect to wifi");
+                // custom dialog
+
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.wifidialog);
+
+
+                try
+                {
+                    Thread.sleep(2000);//1sec
+                    dialog.show();
+                    wifi_button = (Button)dialog.findViewById(R.id.wifi_button);
+                    wifi_button.setOnClickListener(new View.OnClickListener() // the error is on this line (specifically the .setOnClickListener)
+                    {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            System.out.println("wifi_button_clicked");
+//                            startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                            // TODO Auto-generated method stub
+                            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                            final ComponentName cn = new ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings");
+                            intent.setComponent(cn);
+                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                            dialog.dismiss();
+                            startActivity(intent);
+
+                        }
+                    });
+                }
+                catch(InterruptedException ex)
+                {
+                    ex.printStackTrace();
+                }
+
+//                Toast.makeText(context, "Switch to IITD/edurom wifi from Mobile Data", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // not connected to the internet
+            Toast.makeText(context, "Please connect to IITD/edurom wifi", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkWifi();
+    }
 
     private void userLogin() {
 
@@ -190,14 +254,27 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-//                        System.out.println(error.toString());
-                        String connection_error = "com.android.volley.NoConnectionError: java.net.ConnectException: failed to connect to /10.17.5.66 (port 8080) after 2500ms: isConnected failed: ECONNREFUSED (Connection refused)";
-                        if(error.toString().equals(connection_error)){
-                            Toast.makeText(userlogin.this,"Please connect to IITD Wifi",Toast.LENGTH_LONG ).show();
+
+                        try {
+                            String errorString = new String(error.networkResponse.data);
+                            JSONObject errorObj = new JSONObject(errorString);
+                            String errorMessage = errorObj.getString("error");
+                            Toast.makeText(userlogin.this,errorMessage,Toast.LENGTH_LONG ).show();
                         }
-                        else{
-                            Toast.makeText(userlogin.this,"Please check username or password",Toast.LENGTH_LONG ).show();
+                        catch (Exception e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(userlogin.this,"Connection Error",Toast.LENGTH_LONG ).show();
+
                         }
+//                        System.out.println("error volley");
+//                        String connection_error = "com.android.volley.NoConnectionError: java.net.ConnectException: failed to connect to /10.17.5.66 (port 8080) after 2500ms: isConnected failed: ECONNREFUSED (Connection refused)";
+//                        if(error.toString().equals(connection_error)){
+//                            Toast.makeText(userlogin.this,"Please connect to IITD Wifi",Toast.LENGTH_LONG ).show();
+//                        }
+//                        else{
+//                            Toast.makeText(userlogin.this,"Please check username or password",Toast.LENGTH_LONG ).show();
+//                        }
 
                     }
                 }){
@@ -235,7 +312,9 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         }
 
         if(view == buttonSignIn){
+//            finish();
             userLogin();
+
 
         }
     }

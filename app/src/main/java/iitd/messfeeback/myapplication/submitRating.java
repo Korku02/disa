@@ -31,7 +31,7 @@ import java.util.Map;
 public class submitRating extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String SUBMIT_URL = "http://10.17.5.66:8080/api/meal/";
+    public static final String SUBMIT_URL = "http://192.168.43.184:8080/api/meal/";
 
     public static final String HOSTEL = "hostel";
     public static final  String RATING = "rating";
@@ -127,6 +127,7 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
 
                         try {
                             JSONObject responseObj = new JSONObject(response);
+                            System.out.println(responseObj.toString()+"korku");
                             String feedbackDate = responseObj.getString("created");
                             String feedbackType = responseObj.getString("meal_type");
                             String feedbackRating = responseObj.getString("rating");
@@ -167,13 +168,22 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                     public void onErrorResponse(VolleyError error) {
 
 //                        JSONObject errorObj = new JSONObject(error);
-                        System.out.println(error);
-                        System.out.println("error feedback");
-                        Toast.makeText(submitRating.this,"Feedback is already completed for corresponding field.",Toast.LENGTH_LONG ).show();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
-                        System.out.println("Deepak Korku no meal");
-                        System.out.println(token);
+
+                        try {
+                            String errorString = new String(error.networkResponse.data);
+                            JSONObject errorObj = new JSONObject(errorString);
+                            String errorMessage = errorObj.getString("error");
+                            Toast.makeText(submitRating.this,errorMessage,Toast.LENGTH_LONG ).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+                        }
+                        catch (Exception e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(submitRating.this,"Conection error",Toast.LENGTH_LONG ).show();
+
+                        }
+
                     }
                 }){
             @Override
