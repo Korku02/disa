@@ -38,21 +38,21 @@
             android:textColor="@color/colorAluminium"
             android:layout_margin="15dp"
             />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter email"
             android:inputType="textEmailAddress" />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="Enter Name"
             android:inputType="textPersonName" />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextEntryNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_marginRight="15dp"
             />
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,9 +82,10 @@
 
         <Button
             android:id="@+id/buttonSignup"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="16dp"
             android:text="Signup"
             android:background="@drawable/roundbutton"
             android:textColor="#ffffff"/>

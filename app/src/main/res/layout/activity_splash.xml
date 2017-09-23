@@ -7,11 +7,6 @@
     tools:context="iitd.messfeeback.myapplication.Splash">
 
 
-
-
-
-
-
     <include layout="@layout/content_splash" />
 
 
