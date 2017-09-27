@@ -27,6 +27,7 @@ public class scanner extends Fragment implements View.OnClickListener {
 
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -64,15 +65,13 @@ public class scanner extends Fragment implements View.OnClickListener {
 
 
 
-
-
-
     @Override
     public void onClick(View view) {
         //initiating the qr code scan
         if(view == buttonScan){
             giveAttendance = FALSE;
             qrScan.initiateScan();
+
         }
     }
 }

@@ -1,0 +1,215 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="layout.profile2">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/casualBackground">
+
+        <LinearLayout
+            android:id="@+id/Content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/mainCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/editTextUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Username"
+                    android:textColor="@color/colorNevada"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/editTextHostelname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="Hostel Name"
+                    android:textColor="@color/colorSteelGrey"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/editTextUserid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="Entry No"
+                    android:textColor="@color/colorWaikawaGrey"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/editTextUseremail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="Hostel Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/NAvigator"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Button"
+                    android:layout_margin="18dp"
+                    android:drawable="@drawable/roundbutton"
+                    android:elevation="12dp"/>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="18dp"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="18dp"
+                    android:text="Button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardlastFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainCard"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/lastfeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:text="LastFeedback"
+                        android:textColor="@color/colorNevada"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/lastFeedbackDateType"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:text="Date | Type"
+                        android:textColor="@color/colorSteelGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/lastFeedbackRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center"
+                        android:text="Rating : 5"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardLastAttendance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainCard"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:text="Last Meal"
+                        android:textColor="@color/colorNevada"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/lastAttendanceDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:text="Date"
+                        android:textColor="@color/colorSteelGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/lastAttendanceType"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center"
+                        android:text="Type"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

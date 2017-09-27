@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteY="8dp"
         android:layout_marginTop="0dp"
-        android:background="@color/colorSteelGrey"
+        android:background="@color/casualBackground"
         tools:layout_editor_absoluteX="8dp" >
     </FrameLayout>
 

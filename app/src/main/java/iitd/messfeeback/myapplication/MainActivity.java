@@ -46,7 +46,7 @@ import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static final String SUBMIT_URL = "http://192.168.43.184:8080/api/attendance/";
+    public static final String SUBMIT_URL = "http://10.194.9.102:8080/api/attendance/";
 
     public static final String HOSTEL = "hostel";
     public static final  String ATTENDANCE = "attendance";
@@ -100,19 +100,6 @@ public class MainActivity extends AppCompatActivity
         String name = sharedPreferences.getString(Config.KEY_NAME,"Not Available");
         String id = sharedPreferences.getString(Config.KEY_ID,"Not Available");
         String token = sharedPreferences.getString(Config.KEY_TOKEN,"Not Available");
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

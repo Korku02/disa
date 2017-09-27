@@ -11,15 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 
-public class profile extends Fragment {
+public class profile extends Fragment implements View.OnClickListener {
 
 
 
     private TextView editTextUsername, editTextHostelname,  lastAttendanceDate, lastAttendanceType;
     private TextView editTextUserid, editTextUseremail, lastFeedbackDateType, lastFeedbackRating;
-
+    private Button MarkAttendance, GiveFeedback, PrevFeedback;
+    private IntentIntegrator qrScan;
+    public static Boolean markAttendance, giveFeedback;
 
 
     @Nullable
@@ -49,8 +58,13 @@ public class profile extends Fragment {
         String feedbackRating = sharedPreferences.getString(Config.FEEDBACK_RATING,"Not Available");
         String attendanceType = sharedPreferences.getString(Config.ATTENDANCE_TYPE,"Not Available");
         String attendanceDate = sharedPreferences.getString(Config.ATTENDANCE_DATE,"Not Available");
-
-
+        MarkAttendance = (Button) getActivity().findViewById(R.id.MarkAttendance);
+        GiveFeedback = (Button) getActivity().findViewById(R.id.GiveFeedback);
+        PrevFeedback = (Button) getActivity().findViewById(R.id.PrevFeedback);
+        markAttendance = FALSE;
+        giveFeedback = FALSE;
+        MarkAttendance.setOnClickListener(this);
+        GiveFeedback.setOnClickListener(this);
 
 
         editTextUsername = (TextView) getActivity().findViewById(R.id.editTextUsername);
@@ -93,6 +107,23 @@ public class profile extends Fragment {
 
 
     }
+    public void onClick(View v) {
+        if(v == MarkAttendance){
+            qrScan = new IntentIntegrator(getActivity());
+            markAttendance = TRUE;
+            qrScan.initiateScan();
+            System.out.println(markAttendance);
+            qrScan.setTimeout(5000);
+        }else if(v == GiveFeedback){
+            qrScan = new IntentIntegrator(getActivity());
+            giveFeedback = TRUE;
+            qrScan.initiateScan();
+            System.out.println(giveFeedback);
+            qrScan.setTimeout(5000);
+        }else if(v == PrevFeedback){
+            System.out.print("Comming soon");
+        }
 
+    }
 
 }

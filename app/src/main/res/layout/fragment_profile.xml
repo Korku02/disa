@@ -11,86 +11,147 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorSteelGrey">
+        android:background="@color/casualBackground">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/Content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="@color/colorSteelGrey"
-            >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:layout_height="wrap_content"
+                android:id="@+id/NAvigator"
                 android:layout_width="match_parent"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/circlecard"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginBottom="15dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="100dp"
+                        android:layout_gravity="bottom|center"
+                        android:text="Mark Attendance"
+                        android:background="@drawable/roundbutton"
+                        android:textColor="#303030"
+                        tools:layout_editor_absoluteY="26dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/GiveFeedback"
+                        android:id="@+id/MarkAttendance"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="100dp"
+                        android:layout_gravity="bottom|center"
+                        android:text="Give Fedback"
+                        android:background="@drawable/roundbutton"
+                        android:textColor="#303030"
+                        tools:layout_editor_absoluteY="26dp"
+                        android:id="@+id/GiveFeedback"
+                        app:layout_constraintRight_toLeftOf="@+id/PrevFeedback"
+                        android:layout_marginLeft="18dp"
+                        android:layout_alignBaseline="@+id/MarkAttendance"
+                        android:layout_alignBottom="@+id/MarkAttendance"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="18dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="100dp"
+                        android:layout_gravity="bottom|center"
+                        android:text="Previous Feedbacks"
+                        android:background="@drawable/roundbutton"
+                        android:textColor="#303030"
+                        tools:layout_editor_absoluteY="26dp"
+                        android:id="@+id/PrevFeedback"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginRight="16dp"
+                        android:layout_alignBaseline="@+id/MarkAttendance"
+                        android:layout_alignBottom="@+id/MarkAttendance"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/mainCard"
-                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
                 android:gravity="center"
-                >
+                android:orientation="vertical">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/colorNevada"
-                    android:textSize="30dp"
                     android:id="@+id/editTextUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
                     android:fontFamily="sans-serif"
-                    android:layout_centerHorizontal="true"
-                    />
+                    android:text="Username"
+                    android:textColor="@color/colorNevada"
+                    android:textSize="30dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hostel Name"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorSteelGrey"
-                    android:textSize="20dp"
                     android:id="@+id/editTextHostelname"
-                    android:layout_centerHorizontal="true"
-                    />
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Entry No"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorWaikawaGrey"
-                    android:textSize="18dp"
-                    android:id="@+id/editTextUserid"
-                    android:layout_centerHorizontal="true"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Hostel Name"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16dp"
-                    android:id="@+id/editTextUseremail"
+                    android:textColor="@color/colorSteelGrey"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/editTextUserid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    />
+                    android:layout_marginBottom="5dp"
+                    android:text="Entry No"
+                    android:textColor="@color/colorWaikawaGrey"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/editTextUseremail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="Hostel Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
 
 
             </LinearLayout>
 
-
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp"
                 android:id="@+id/cardlastFeedback"
-                android:background="@drawable/circlecard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/mainCard"
-                android:orientation="horizontal"
-                >
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
+                android:orientation="horizontal">
 
 
                 <RelativeLayout
@@ -98,54 +159,51 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/lastfeed"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:text="LastFeedback"
-                        android:textSize="20dp"
                         android:gravity="center"
+                        android:text="LastFeedback"
                         android:textColor="@color/colorNevada"
-                        android:id="@+id/lastfeed"/>
+                        android:textSize="20dp" />
+
                     <TextView
+                        android:id="@+id/lastFeedbackDateType"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginTop="30dp"
-                        android:text="Date | Type"
-                        android:textSize="16dp"
-                        android:id="@+id/lastFeedbackDateType"
                         android:gravity="center"
+                        android:text="Date | Type"
                         android:textColor="@color/colorSteelGrey"
-                        />
+                        android:textSize="16dp" />
+
                     <TextView
+                        android:id="@+id/lastFeedbackRating"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginTop="60dp"
-                        android:text="Rating : 5"
-                        android:textSize="20dp"
-                        android:id="@+id/lastFeedbackRating"
                         android:gravity="center"
+                        android:text="Rating : 5"
                         android:textColor="@color/colorPrimary"
-                        />
+                        android:textSize="20dp" />
 
                 </RelativeLayout>
-
-
-
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="130dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp"
                 android:id="@+id/cardLastAttendance"
-                android:background="@drawable/circlecard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/mainCard"
-                android:orientation="horizontal"
-                >
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/circlecard"
+                android:elevation="12dp"
+                android:orientation="horizontal">
 
 
                 <RelativeLayout
@@ -155,41 +213,37 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:text="Last Meal"
-                        android:textSize="20dp"
                         android:gravity="center"
-                        android:textColor="@color/colorNevada"/>
+                        android:text="Last Meal"
+                        android:textColor="@color/colorNevada"
+                        android:textSize="20dp" />
+
                     <TextView
+                        android:id="@+id/lastAttendanceDate"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginTop="30dp"
-                        android:text="Date"
-                        android:textSize="16dp"
-                        android:id="@+id/lastAttendanceDate"
                         android:gravity="center"
+                        android:text="Date"
                         android:textColor="@color/colorSteelGrey"
-                        />
+                        android:textSize="16dp" />
+
                     <TextView
+                        android:id="@+id/lastAttendanceType"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginTop="60dp"
-                        android:text="Type"
-                        android:textSize="20dp"
-                        android:id="@+id/lastAttendanceType"
                         android:gravity="center"
+                        android:text="Type"
                         android:textColor="@color/colorPrimary"
-                        />
+                        android:textSize="20dp" />
 
                 </RelativeLayout>
 
 
-
-
-
             </LinearLayout>
 
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </ScrollView>
 
