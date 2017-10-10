@@ -33,11 +33,8 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
-<<<<<<< HEAD
-    public static final String REGISTER_URL = "http://10.194.9.102:8080/register/";
-=======
-    public static final String REGISTER_URL = "http://10.17.5.66:8080/register/";
->>>>>>> 7f3f32d5af8051f400757d7fde25650b8f79fa0e
+    public static final String REGISTER_URL = "http://10.192.16.94:8080/register/";
+
 
     public static final String USER_NAME = "user_name";
     public static final String PASSWORD = "password";

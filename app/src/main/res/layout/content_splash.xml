@@ -9,25 +9,28 @@
     tools:showIn="@layout/activity_splash"
     android:padding="16dp"
     android:background="@drawable/gradient2">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        app:srcCompat="@drawable/m"
+        android:layout_marginBottom="50dp"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="260dp"
         android:text="Mess Feedback App"
         android:textSize="42dp"
         android:gravity="center"
-        android:textColor="@color/colorNevada"/>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/m"
-        android:layout_marginBottom="220dp"
+        android:textColor="@color/colorNevada"
+        android:layout_marginBottom="163dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

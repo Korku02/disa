@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String LOGIN_URL = "http://10.194.9.102:8080/login/";
+    public static final String LOGIN_URL = "http://10.192.16.94:8080/login/";
 
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";

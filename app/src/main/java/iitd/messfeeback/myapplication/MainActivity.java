@@ -46,7 +46,7 @@ import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static final String SUBMIT_URL = "http://10.194.9.102:8080/api/attendance/";
+    public static final String SUBMIT_URL = "http://10.192.16.94:8080/api/attendance/";
 
     public static final String HOSTEL = "hostel";
     public static final  String ATTENDANCE = "attendance";

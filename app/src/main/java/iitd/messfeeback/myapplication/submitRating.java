@@ -31,11 +31,12 @@ import java.util.Map;
 public class submitRating extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String SUBMIT_URL = "http://192.168.43.184:8080/api/meal/";
+    public static final String SUBMIT_URL = "http://10.192.16.94:8080/api/meal/";
 
     public static final String HOSTEL = "hostel";
     public static final  String RATING = "rating";
     public static final String MEAL_TYPE = "meal_type";
+    public static final String Comment = "comment";
 
     private Button buttonSubmit;
     private RatingBar ratingBar;
