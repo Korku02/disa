@@ -25,7 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -33,11 +32,9 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
-<<<<<<< HEAD
-    public static final String REGISTER_URL = "http://10.194.9.102:8080/register/";
-=======
-    public static final String REGISTER_URL = "http://10.17.5.66:8080/register/";
->>>>>>> 7f3f32d5af8051f400757d7fde25650b8f79fa0e
+
+    public static final String REGISTER_URL = "http://192.168.43.184:8080/register/";
+
 
     public static final String USER_NAME = "user_name";
     public static final String PASSWORD = "password";

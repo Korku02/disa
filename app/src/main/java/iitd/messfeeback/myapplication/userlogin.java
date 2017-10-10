@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String LOGIN_URL = "http://10.194.9.102:8080/login/";
+    public static final String LOGIN_URL = "http://192.168.43.184:8080/login/";
 
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
@@ -66,8 +66,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "gm4O6OvFkNLg4JIhkekpRVmSGun2AiDxJvRzXouj";
-    private String client_secret = "5L3e91WP6t0d5LOQo0j5OSMUfth2Z0UYNHgtws6XQJFfmKXmMPsHO3SmpjOI4vUlclaiTVRbRXHYEHkQqy2imxUXJGETYXDPAyykxeas21dOm6kH7bDMEj8d722A7ZN7";
+    private String client_id = "luUBib80DtKimx2SFhDsZIgdzT9SeO0pMRdRskL6";
+    private String client_secret = "DyoDfiim0PMkvFH2uWK616XTexYVKzLDn1y3hc4LKBAIMGyiU2CJ2WpdX2O3cj43t9jtbWIaW9bLJ3sYvYQ8wACh9BPCTWNbLOwV3ycEVEUfBYnkG23RH5XhUgFrFIpT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -321,4 +321,3 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
 
 
 }
-
