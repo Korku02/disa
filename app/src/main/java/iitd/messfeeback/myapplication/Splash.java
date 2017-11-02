@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class Splash extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
     private TextView textView2;
     /** Called when the activity is first created. */
     @Override
@@ -27,14 +27,20 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
 
+//                startActivity(new Intent(Splash.this, userlogin.class));
 
-                startActivity(new Intent(Splash.this, userlogin.class));
+                Intent launchNextActivity;
+                launchNextActivity = new Intent(Splash.this, userlogin.class);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(launchNextActivity);
                 finish();
-
-
 
             }
         },  SPLASH_DISPLAY_LENGTH);
     }
+
+
 
 }

@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,7 @@ import java.util.Map;
  */
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String LOGIN_URL = "http://192.168.43.184:8080/login/";
+    public static final String LOGIN_URL = "http://10.194.11.132:8080/login/";
 
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
@@ -115,9 +116,29 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
             //We will start the Profile Activity
             Intent intent = new Intent(userlogin.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
+    private boolean exit=false;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (exit) {
+            finish();
+            System.out.println("Main finished");
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 1000);
 
+        }
+    }
     public void checkWifi(){
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();

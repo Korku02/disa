@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -46,7 +49,7 @@ import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static final String SUBMIT_URL = "http://192.168.43.184:8080/api/attendance/";
+    public static final String SUBMIT_URL = "http://10.194.11.132:8080/api/attendance/";
 
     public static final String HOSTEL = "hostel";
     public static final  String ATTENDANCE = "attendance";
@@ -58,11 +61,10 @@ public class MainActivity extends AppCompatActivity
     private TextView editTextUseremail;
     private Fragment currentFragment;
     private String datetimeString , timeString , dateString;
-    private TextView messType;
+    private boolean exit = false;
     public static String messType1;
     public static Boolean Mess;
     public Button wifi_button;
-    private Boolean exit = false;
     Context context = this;
 
 
@@ -71,26 +73,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        startSplash();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new profile()).commit();
         }
-
-
-
-
-
-
-
-//         Intent intent = getIntent();
-//         email = intent.getExtras().getString("email");
-//         token = intent.getExtras().getString("token");
-//         hostel = intent.getExtras().getString("hostel");
-//         id = intent.getExtras().getString("id");
-//         name = intent.getExtras().getString("name");
 
         //Fetching data from shared preferences
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -100,20 +92,6 @@ public class MainActivity extends AppCompatActivity
         String name = sharedPreferences.getString(Config.KEY_NAME,"Not Available");
         String id = sharedPreferences.getString(Config.KEY_ID,"Not Available");
         String token = sharedPreferences.getString(Config.KEY_TOKEN,"Not Available");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -188,6 +166,27 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (exit) {
+            finish();
+            System.out.println("Main finished");
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 1000);
+
+        }
+    }
+
     public void checkWifi(){
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -248,32 +247,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-        finish();
-
-//        if (exit) {
-//            finish(); // finish activity
-//        } else {
-//            Toast.makeText(this, "Press Back again to Exit.",
-//                    Toast.LENGTH_SHORT).show();
-//            exit = true;
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    exit = false;
-//                }
-//            }, 1000);
-//
-//        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
