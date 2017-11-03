@@ -117,6 +117,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
             //We will start the Profile Activity
             Intent intent = new Intent(userlogin.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
