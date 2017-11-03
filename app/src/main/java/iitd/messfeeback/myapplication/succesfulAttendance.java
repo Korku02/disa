@@ -19,8 +19,8 @@ public class succesfulAttendance extends AppCompatActivity {
 
         sucessText = (TextView) findViewById(R.id.successText);
         Typeface mont_bold = Typeface.createFromAsset(getAssets(), "font/Montserrat-Bold.ttf");
-        Typeface mont_med =Typeface.createFromAsset(getAssets(), "font/Montserrat-Medium.ttf");
-        Typeface mont_light =Typeface.createFromAsset(getAssets(), "font/Montserrat-Light.ttf");
+//        Typeface mont_med =Typeface.createFromAsset(getAssets(), "font/Montserrat-Medium.ttf");
+//        Typeface mont_light =Typeface.createFromAsset(getAssets(), "font/Montserrat-Light.ttf");
         sucessText.setTypeface(mont_bold);
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/

@@ -94,7 +94,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -151,7 +151,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
+                android:elevation="5dp"
                 android:orientation="horizontal">
 
 
@@ -203,7 +203,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
+                android:elevation="5dp"
                 android:orientation="horizontal">
 
 

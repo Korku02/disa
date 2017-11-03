@@ -132,7 +132,6 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                             String feedbackDate = responseObj.getString("created");
                             String feedbackType = responseObj.getString("meal_type");
                             String feedbackRating = responseObj.getString("rating");
-                            String feedbackComment = responseObj.getString("Comment");
                             System.out.println("korku" + responseObj);
                             Toast.makeText(submitRating.this, "Submitted Succesfully",Toast.LENGTH_LONG ).show();
                             startActivity(new Intent(getApplicationContext(), successfulFeedback.class));
