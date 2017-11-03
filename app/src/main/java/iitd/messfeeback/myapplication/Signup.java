@@ -33,7 +33,7 @@ import java.util.Map;
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String REGISTER_URL = "http://10.192.16.94:8080/register/";
+    public static final String REGISTER_URL = "http://10.17.5.66:8080/register/";
 
 
     public static final String USER_NAME = "user_name";
@@ -72,6 +72,8 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
         buttonSignup.setOnClickListener(this);
         textViewLogin.setOnClickListener(this);
+
+        progressDialog = new ProgressDialog(this);
 
         Typeface mont_bold = Typeface.createFromAsset(getAssets(), "font/Montserrat-Bold.ttf");
         Typeface mont_med =Typeface.createFromAsset(getAssets(), "font/Montserrat-Medium.ttf");
@@ -157,6 +159,10 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         final String user_id = editTextEntryNo.getText().toString().trim();
         final String user_hostel = spinnerHostel.getSelectedItem().toString().trim();
 
+        progressDialog.setMessage("Please Wait....");
+        progressDialog.show();
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -180,11 +186,13 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                             JSONObject errorObj = new JSONObject(errorString);
                             String errorMessage = errorObj.getString("error");
                             Toast.makeText(Signup.this,errorMessage,Toast.LENGTH_LONG ).show();
+                            progressDialog.dismiss();
                         }
                         catch (Exception e) {
                             // JSON error
                             e.printStackTrace();
                             Toast.makeText(Signup.this,"Connection Error",Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
 
                         }
 

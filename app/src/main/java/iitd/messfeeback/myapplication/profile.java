@@ -9,15 +9,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 
 
 public class profile extends Fragment implements View.OnClickListener {
@@ -109,14 +109,14 @@ public class profile extends Fragment implements View.OnClickListener {
     }
     public void onClick(View v) {
         if(v == MarkAttendance){
+            giveAttendance = TRUE;
             qrScan = new IntentIntegrator(getActivity());
-            markAttendance = TRUE;
             qrScan.initiateScan();
             System.out.println(markAttendance);
             qrScan.setTimeout(5000);
         }else if(v == GiveFeedback){
             qrScan = new IntentIntegrator(getActivity());
-            giveFeedback = TRUE;
+            giveAttendance = FALSE;
             qrScan.initiateScan();
             System.out.println(giveFeedback);
             qrScan.setTimeout(5000);

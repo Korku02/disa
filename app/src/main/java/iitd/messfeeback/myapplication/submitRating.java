@@ -31,7 +31,7 @@ import java.util.Map;
 public class submitRating extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String SUBMIT_URL = "http://10.192.16.94:8080/api/meal/";
+    public static final String SUBMIT_URL = "http://10.17.5.66:8080/api/meal/";
 
     public static final String HOSTEL = "hostel";
     public static final  String RATING = "rating";
@@ -87,7 +87,7 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         System.out.println("Deepak Korku" + rating);
 
 
-        if((st1 >=1 && st1<=3 && t2.equals("p")) || (st1 ==11 && t2.equals("a")) || (st1 ==12 && t2.equals("p"))){
+        if((st1 >=1 && st1<=3 && (t2.equals("p") ||t2.equals("P") )) || (st1 ==11 && (t2.equals("a") || t2.equals("A"))  )  || (st1 ==12 && (t2.equals("p") || t2.equals("P")) )){
             String mealType = "lunch";
             messType1 = mealType;
             messType.setText(mealType);
@@ -95,14 +95,14 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
 
         }
 
-        else if((st1 >=6 && st1<=10 && t2.equals("a"))){
+        else if((st1 >=6 && st1<=10 && (t2.equals("a") || t2.equals("A") )  )){
             String mealType = "breakfast";
             messType1 = mealType;
             messType.setText(mealType);
 
         }
 
-        else if((st1 >=6 && st1<=10 && t2.equals("p"))) {
+        else if((st1 >=6 && st1<=10 && (t2.equals("p") ||t2.equals("P") )  )) {
 
             String mealType = "dinner";
             messType1 = mealType;

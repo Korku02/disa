@@ -37,7 +37,7 @@ import java.util.Map;
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String LOGIN_URL = "http://10.192.16.94:8080/login/";
+    public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
 
 
     public static  final String CLIENT_ID = "client_id";
@@ -68,8 +68,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "luUBib80DtKimx2SFhDsZIgdzT9SeO0pMRdRskL6";
-    private String client_secret = "DyoDfiim0PMkvFH2uWK616XTexYVKzLDn1y3hc4LKBAIMGyiU2CJ2WpdX2O3cj43t9jtbWIaW9bLJ3sYvYQ8wACh9BPCTWNbLOwV3ycEVEUfBYnkG23RH5XhUgFrFIpT";
+    private String client_id = "5aR3S6Y3rFOJ0793DsmbLDLfYJHp7K9Wb0Pknegu";
+    private String client_secret = "msPUDtanIPnw4Y1daTPoE9WZrlIdnlhhqXybUpfJUcjvxy7BTH6KJLYucp10Ay13zG55AqVvs62AyLCeLklok4nDzHf4inORMHU2l5ybOpatnHrOFV9coDRCDF6yWOGZ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,12 +186,14 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         // these two lines are for testing purposed delete after your activity
         //Intent intent = new Intent(userlogin.this, MainActivity.class);
         //startActivity(intent);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.setMessage("Please Wait...");
+
 
 //                        int status=json
 //                        System.out.println("korku"+response);
@@ -226,6 +228,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
 //                                intent.putExtra("id", id);
 
                             startActivity(intent);
+                            finish();
 
                             SharedPreferences sharedPreferences = userlogin.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
@@ -262,6 +265,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             JSONObject errorObj = new JSONObject(errorString);
                             String errorMessage = errorObj.getString("error");
                             Toast.makeText(userlogin.this,errorMessage,Toast.LENGTH_LONG ).show();
+                            progressDialog.dismiss();
                         }
                         catch (Exception e) {
                             // JSON error

@@ -1,6 +1,7 @@
 package iitd.messfeeback.myapplication;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
 
-    public static final String SUBMIT_URL = "http://10.192.16.94:8080/api/attendance/";
+    public static final String SUBMIT_URL = "http://10.17.5.66:8080/api/attendance/";
+    public static final String UPDATE_URL = "http://10.17.5.66:8080/api/getlastdata/";
 
 
     public static final String HOSTEL = "hostel";
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity
     public Button wifi_button;
     private Boolean exit = false;
     Context context = this;
+    private ProgressDialog progressDialog;
 
 
 
@@ -80,6 +84,9 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new profile()).commit();
         }
+
+        checkWifi();
+
 
 
 
@@ -100,8 +107,14 @@ public class MainActivity extends AppCompatActivity
         System.out.println("Deepak Korku" + email);
         String hostel = sharedPreferences.getString(Config.KEY_HOSTEL,"Not Available");
         String name = sharedPreferences.getString(Config.KEY_NAME,"Not Available");
-        String id = sharedPreferences.getString(Config.KEY_ID,"Not Available");
-        String token = sharedPreferences.getString(Config.KEY_TOKEN,"Not Available");
+        String lastFeedbackDateType = sharedPreferences.getString(Config.FEEDBACK_DATE,"Not Available");
+        String lastAttendanceDate = sharedPreferences.getString(Config.ATTENDANCE_DATE,"Not Available");
+
+//        if(lastFeedbackDateType.equals("Not Available" ) || lastAttendanceDate.equals("Not Available" )){
+            updateInfo();
+//        }
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,6 +130,7 @@ public class MainActivity extends AppCompatActivity
         View headerView= navigationView.getHeaderView(0);
         editTextUsername = (TextView) headerView.findViewById(R.id.editTextUsername);
         editTextUseremail = (TextView) headerView.findViewById(R.id.editTextUseremail);
+        progressDialog = new ProgressDialog(this);
 
 
 
@@ -137,9 +151,10 @@ public class MainActivity extends AppCompatActivity
         String t2 = datetimeString.substring(20,21);
         int st1 = Integer.parseInt(t1);
 
+        System.out.println(t1 +" "+ t2 + " "+st1);
 
 
-        if((st1 >=1 && st1<=3 && t2.equals("p")) || (st1 ==11 && t2.equals("a")) || (st1 ==12 && t2.equals("p"))){
+        if((st1 >=1 && st1<=3 && (t2.equals("p") ||t2.equals("P") )) || (st1 ==11 && (t2.equals("a") || t2.equals("A"))  )  || (st1 ==12 && (t2.equals("p") || t2.equals("P")) )){
             String mealType = "lunch";
             messType1 = mealType;
             Mess = Boolean.TRUE;
@@ -148,7 +163,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        else if((st1 >=6 && st1<=10 && t2.equals("a"))){
+        else if((st1 >=6 && st1<=10 && (t2.equals("a") || t2.equals("A") )  )){
             String mealType = "breakfast";
             messType1 = mealType;
             Mess = Boolean.TRUE;
@@ -156,7 +171,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        else if((st1 >=6 && st1<=10 && t2.equals("p"))) {
+        else if((st1 >=6 && st1<=10 && (t2.equals("p") ||t2.equals("P") )  )) {
 
             String mealType = "dinner";
             messType1 = mealType;
@@ -177,6 +192,114 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public void updateInfo(){
+
+//        progressDialog.setMessage("Please wait....");
+//        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, UPDATE_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+//                            System.out.println(jObj.get("last_attendance"));
+                            JSONArray attendance_data = jObj.getJSONArray("last_attendance");
+                            JSONArray feedback_data = jObj.getJSONArray("last_feedback");
+
+                            String feedbackDate = feedback_data.getJSONObject(0).getString("created");
+                            String feedbackType = feedback_data.getJSONObject(0).getString("meal_type");
+                            String feedbackRating = feedback_data.getJSONObject(0).getString("rating");
+
+
+                            String attendanceDate = attendance_data.getJSONObject(0).getString("created");
+                            String attendanceType = attendance_data.getJSONObject(0).getString("meal_type");
+//
+
+
+//                            System.out.println("Deepak Korku"+response);
+
+
+                            SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                            //Creating editor to store values to shared preferences
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            //Adding values to editor
+
+                            editor.putString(Config.FEEDBACK_DATE, feedbackDate);
+                            editor.putString(Config.FEEDBACK_TYPE, feedbackType);
+                            editor.putString(Config.FEEDBACK_RATING, feedbackRating);
+                            editor.putString(Config.ATTENDANCE_DATE, attendanceDate);
+                            editor.putString(Config.ATTENDANCE_TYPE, attendanceType);
+
+                            //Saving values to editor
+                            editor.apply();
+
+                            Toast.makeText(MainActivity.this,"Data synced succesfully",Toast.LENGTH_LONG ).show();
+
+
+
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        try {
+                            String errorString = new String(error.networkResponse.data);
+                            JSONObject errorObj = new JSONObject(errorString);
+                            String errorMessage = errorObj.getString("error");
+//                            System.out.println(errorMessage);
+                            Toast.makeText(MainActivity.this,errorMessage,Toast.LENGTH_LONG ).show();
+//                            progressDialog.dismiss();
+                        }
+                        catch (Exception e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(MainActivity.this,"Connection Error",Toast.LENGTH_LONG ).show();
+
+                        }
+//                        System.out.println("error volley");
+//                        String connection_error = "com.android.volley.NoConnectionError: java.net.ConnectException: failed to connect to /10.17.5.66 (port 8080) after 2500ms: isConnected failed: ECONNREFUSED (Connection refused)";
+//                        if(error.toString().equals(connection_error)){
+//                            Toast.makeText(userlogin.this,"Please connect to IITD Wifi",Toast.LENGTH_LONG ).show();
+//                        }
+//                        else{
+//                            Toast.makeText(userlogin.this,"Please check username or password",Toast.LENGTH_LONG ).show();
+//                        }
+
+                    }
+                }){
+
+            SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+
+
+            String token = sharedPreferences.getString(Config.KEY_TOKEN,"Not Available");
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> headers = new HashMap<String,String>();
+                headers.put("Content-Type","application/x-www-form-urlencoded");
+                headers.put("Authorization","Bearer"+" " +token);
+                return headers;
+            }
+
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
     public void checkWifi(){
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -184,11 +307,12 @@ public class MainActivity extends AppCompatActivity
             if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
 //                System.out.println("connected to wifi");
 //                Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+                //return false;
             } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
                 // connected to the mobile provider's data plan
 //                System.out.println("Please connect to wifi");
                 // custom dialog
-
+                //return true;
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.wifidialog);
 
@@ -225,17 +349,19 @@ public class MainActivity extends AppCompatActivity
 //                Toast.makeText(context, "Switch to IITD/edurom wifi from Mobile Data", Toast.LENGTH_SHORT).show();
             }
         } else {
+            //return true;
             // not connected to the internet
             Toast.makeText(context, "Please connect to IITD/edurom wifi", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkWifi();
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        checkWifi();
+//        updateInfo();
+//
+//    }
 
     @Override
     public void onBackPressed() {
@@ -411,11 +537,13 @@ public class MainActivity extends AppCompatActivity
                             String errorString = new String(error.networkResponse.data);
                             JSONObject errorObj = new JSONObject(errorString);
                             String errorMessage = errorObj.getString("error");
+                            System.out.println(errorMessage);
                             Toast.makeText(MainActivity.this,errorMessage,Toast.LENGTH_LONG ).show();
                         }
                         catch (Exception e) {
                             // JSON error
                             e.printStackTrace();
+                            System.out.println(e);
                             Toast.makeText(MainActivity.this,"Connection error",Toast.LENGTH_LONG ).show();
 
                         }
@@ -474,9 +602,11 @@ public class MainActivity extends AppCompatActivity
 
                 String hostel = sharedPreferences.getString(Config.KEY_HOSTEL,"Not Available");
                 System.out.println("deepak feedback");
+                System.out.println(Mess);
+                System.out.println(giveAttendance);
                 if(result.getContents().equals(hostel) && Mess && !giveAttendance){
 //                if(result.getContents().equals(hostel) && Mess){
-                    System.out.println("giveAttendane1");
+                    System.out.println("giveFeedback");
                     System.out.println(giveAttendance);
                     startActivity(new Intent(this, submitRating.class));
                 }
