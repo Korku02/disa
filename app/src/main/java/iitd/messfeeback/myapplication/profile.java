@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -107,6 +108,15 @@ public class profile extends Fragment implements View.OnClickListener {
 
 
     }
+
+    public void scrollToTop(View v) {
+        giveAttendance = TRUE;
+        qrScan = new IntentIntegrator(getActivity());
+        qrScan.initiateScan();
+        System.out.println(markAttendance);
+        qrScan.setTimeout(5000);
+    }
+
     public void onClick(View v) {
         if(v == MarkAttendance){
             giveAttendance = TRUE;

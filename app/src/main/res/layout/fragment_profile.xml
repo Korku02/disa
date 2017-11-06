@@ -24,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:orientation="horizontal"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginBottom="15dp">
+                android:background="#333333">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -36,32 +35,33 @@
                         android:layout_height="wrap_content"
                         android:maxWidth="100dp"
                         android:layout_gravity="bottom|center"
-                        android:text="Mark Attendance"
-                        android:background="@drawable/roundbutton"
-                        android:textColor="#303030"
+                        android:text="Give Feedback"
+                        android:background="@drawable/roundbuttonwhite"
+                        android:textColor="#ffffff"
                         tools:layout_editor_absoluteY="26dp"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@+id/GiveFeedback"
-                        android:id="@+id/MarkAttendance"
+                        android:id="@+id/GiveFeedback"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true" />
+
                     <Button
+                        android:id="@+id/MarkAttendance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxWidth="100dp"
-                        android:layout_gravity="bottom|center"
-                        android:text="Give Fedback"
-                        android:background="@drawable/roundbutton"
-                        android:textColor="#303030"
-                        tools:layout_editor_absoluteY="26dp"
-                        android:id="@+id/GiveFeedback"
-                        app:layout_constraintRight_toLeftOf="@+id/PrevFeedback"
-                        android:layout_marginLeft="18dp"
-                        android:layout_alignBaseline="@+id/MarkAttendance"
-                        android:layout_alignBottom="@+id/MarkAttendance"
+                        android:layout_alignBaseline="@+id/GiveFeedback"
+                        android:layout_alignBottom="@+id/GiveFeedback"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="18dp" />
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginStart="18dp"
+                        android:background="@drawable/roundbuttonwhite"
+                        android:maxWidth="100dp"
+                        android:text="Mark Attendance"
+                        android:textColor="#ffffff"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        tools:layout_editor_absoluteY="26dp" />
+
 
                     <Button
                         android:layout_width="wrap_content"
@@ -69,8 +69,8 @@
                         android:maxWidth="100dp"
                         android:layout_gravity="bottom|center"
                         android:text="Previous Feedbacks"
-                        android:background="@drawable/roundbutton"
-                        android:textColor="#303030"
+                        android:background="@drawable/roundbuttonwhite"
+                        android:textColor="#ffffff"
                         tools:layout_editor_absoluteY="26dp"
                         android:id="@+id/PrevFeedback"
                         app:layout_constraintRight_toRightOf="parent"
@@ -90,12 +90,9 @@
                 android:id="@+id/mainCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
                 android:gravity="center"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -147,12 +144,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mainCard"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp" >
 
 
                 <RelativeLayout
@@ -198,13 +192,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mainCard"
-                android:layout_marginBottom="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/circlecard"
-                android:elevation="12dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
 
 
                 <RelativeLayout
