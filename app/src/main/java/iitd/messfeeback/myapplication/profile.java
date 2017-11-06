@@ -10,15 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static iitd.messfeeback.myapplication.attendance.giveAttendance;
 
 
 public class profile extends Fragment implements View.OnClickListener {
@@ -66,6 +66,7 @@ public class profile extends Fragment implements View.OnClickListener {
         giveFeedback = FALSE;
         MarkAttendance.setOnClickListener(this);
         GiveFeedback.setOnClickListener(this);
+        PrevFeedback.setOnClickListener(this);
 
 
         editTextUsername = (TextView) getActivity().findViewById(R.id.editTextUsername);
@@ -131,7 +132,9 @@ public class profile extends Fragment implements View.OnClickListener {
             System.out.println(giveFeedback);
             qrScan.setTimeout(5000);
         }else if(v == PrevFeedback){
-            System.out.print("Comming soon");
+            Toast.makeText(this.getActivity(),"Coming Soon",Toast.LENGTH_LONG ).show();
+            System.out.println("comming soon");
+
         }
 
     }

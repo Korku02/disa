@@ -22,7 +22,7 @@
 
         <item
             android:id="@+id/nav_aboutUs"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_about"
             android:title="About Us" />
     </group>
 

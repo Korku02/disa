@@ -11,7 +11,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -68,8 +70,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "9jO2Xn15t8pLDB8LwoNpznheTEBZimPAxV2fRxqW";
-    private String client_secret = "oaM1TzRdDwwRQonYkzFEg8KHIM19ahoUEG1Vbu1dIERRKzC1RA8XV5kcId5kt0fCzpDziSDi2n7Fh8Dd26Zvtfgd9LwfKd88GfjYMPSuID8gyoLLEjpX41wnJ7CF5nt8";
+    private String client_id = "5aR3S6Y3rFOJ0793DsmbLDLfYJHp7K9Wb0Pknegu";
+    private String client_secret = "msPUDtanIPnw4Y1daTPoE9WZrlIdnlhhqXybUpfJUcjvxy7BTH6KJLYucp10Ay13zG55AqVvs62AyLCeLklok4nDzHf4inORMHU2l5ybOpatnHrOFV9coDRCDF6yWOGZ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,7 +309,13 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
 //        startActivity(intent);
 //    }
 
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
 
     @Override
     public void onClick(View view) {
