@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,13 +37,15 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
     public static final String HOSTEL = "hostel";
     public static final  String RATING = "rating";
     public static final String MEAL_TYPE = "meal_type";
-    public static final String Comment = "comment";
+    public static final String COMMENT = "comment";
+
 
     private Button buttonSubmit;
     private RatingBar ratingBar;
     private String datetimeString , timeString , dateString;
     private TextView messType;
-    public static String messType1;
+    private EditText Comment;
+    public static String messType1, comment;
 
 
     @Override
@@ -55,8 +58,10 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         messType = (TextView) findViewById(R.id.messType);
-
+        Comment = (EditText) findViewById(R.id.comment);
         buttonSubmit.setOnClickListener(this);
+
+        comment = Comment.getText().toString();
 
     }
 
@@ -91,15 +96,12 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
             String mealType = "lunch";
             messType1 = mealType;
             messType.setText(mealType);
-
-
         }
 
         else if((st1 >=6 && st1<=10 && (t2.equals("a") || t2.equals("A") )  )){
             String mealType = "breakfast";
             messType1 = mealType;
             messType.setText(mealType);
-
         }
 
         else if((st1 >=6 && st1<=10 && (t2.equals("p") ||t2.equals("P") )  )) {
@@ -107,8 +109,6 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
             String mealType = "dinner";
             messType1 = mealType;
             messType.setText(mealType);
-
-
         }
 
         else{
@@ -149,12 +149,8 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                             editor.putString(Config.FEEDBACK_TYPE, feedbackType);
                             editor.putString(Config.FEEDBACK_RATING, feedbackRating);
 
-
-
                             //Saving values to editor
                             editor.apply();
-
-
 
                         } catch (JSONException e) {
                             // JSON error
@@ -189,10 +185,12 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                 }){
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
+
                 Map<String,String> params = new HashMap<String,String>();
                 params.put(HOSTEL,hostel);
                 params.put(RATING,rating);
                 params.put(MEAL_TYPE, messType1);
+                params.put(COMMENT, comment);
                 return params;
 
             }
@@ -209,19 +207,12 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-
-
-
-
     }
 
     @Override
     public void onClick(View v) {
-
         if(v == buttonSubmit){
             saveFeedback();
-
-
         }
     }
 }

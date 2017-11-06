@@ -43,23 +43,36 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/messType"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_marginTop="22dp"
+            android:theme="@style/RatingBar" />
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:layout_below="@+id/ratingBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
         <Button
+            android:id="@+id/buttonSubmit"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:text="@string/submit_feedback"
+            android:layout_below="@+id/comment"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="23dp"
             android:background="@drawable/roundbutton"
+            android:paddingBottom="4dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/colorSolitude"
-            android:id="@+id/buttonSubmit"
-            />
+            android:text="@string/submit_feedback"
+            android:textColor="@color/colorSolitude" />
 
 
 

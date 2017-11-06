@@ -28,6 +28,11 @@
     <string name="submit_feedback">Submit</string>
     <string name="not_connected">Please connect to IITD/eduroam Wifi</string>
     <string name="connect">Connect</string>
+    <string name="aboutUs">
+        The Mess Feedback system has been developed to facilitate an automatic feedback process. It is an end to end wireless attendance and mess feedback system which provides details about the feedback of the hostel mess food the student is undertaking at a particular time.
+        The app is advantageous and convenient for the students and mess committee to improve the quaity of the food based on the feedbacks provided by the students.
+        This is the beta version of our App to test its functionality.
+    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
