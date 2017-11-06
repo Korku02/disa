@@ -88,19 +88,6 @@ public class MainActivity extends AppCompatActivity
         checkWifi();
 
 
-
-
-
-
-
-
-//         Intent intent = getIntent();
-//         email = intent.getExtras().getString("email");
-//         token = intent.getExtras().getString("token");
-//         hostel = intent.getExtras().getString("hostel");
-//         id = intent.getExtras().getString("id");
-//         name = intent.getExtras().getString("name");
-
         //Fetching data from shared preferences
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String email = sharedPreferences.getString(Config.KEY_EMAIL,"Not Available");
