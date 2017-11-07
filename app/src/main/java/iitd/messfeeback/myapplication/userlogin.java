@@ -197,7 +197,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                     @Override
                     public void onResponse(String response) {
 
-
+                        progressDialog.dismiss();
 //                        int status=json
 //                        System.out.println("korku"+response);
 //                        if(response.trim().equals("success")){
@@ -216,7 +216,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             String name = jObj.getString("name");
                             String hostel = jObj.getString("hostel");
                             String id = jObj.getString("id");
-                            progressDialog.dismiss();
+
 
 
 
