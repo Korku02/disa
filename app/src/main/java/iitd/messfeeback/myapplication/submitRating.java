@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -45,7 +47,8 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
     private String datetimeString , timeString , dateString;
     private TextView messType;
     private EditText Comment;
-    public static String messType1, comment;
+    private String comment;
+    public static String messType1;
 
 
     @Override
@@ -60,8 +63,7 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         messType = (TextView) findViewById(R.id.messType);
         Comment = (EditText) findViewById(R.id.comment);
         buttonSubmit.setOnClickListener(this);
-
-        comment = Comment.getText().toString();
+        
 
     }
 
@@ -73,6 +75,8 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         final String token = sharedPreferences.getString(Config.KEY_TOKEN,"Not Available");
 
         final String rating =String.valueOf(ratingBar.getRating());
+
+        comment = Comment.getText().toString().trim();
 
         //timestamp from system
         Long tsLong = System.currentTimeMillis();
@@ -193,6 +197,8 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
                 params.put(COMMENT, comment);
                 return params;
 
+
+
             }
 
             @Override
@@ -207,6 +213,18 @@ public class submitRating extends AppCompatActivity implements View.OnClickListe
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+        System.out.println(stringRequest);
+        System.out.println(comment);
+        System.out.println("comment korku " +comment);
+
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
     }
 
     @Override

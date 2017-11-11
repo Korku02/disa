@@ -415,6 +415,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_manage:
                 fragment = new attendance();
                 break;
+            case R.id.nav_aboutUs:
+                fragment = new aboutUs();
+                break;
             default:
                 fragment = new profile();
                 break;

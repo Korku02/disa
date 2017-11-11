@@ -19,6 +19,11 @@
             android:layout_width="50sp"
             android:layout_height="50dp"
             android:title="Give Attendance" />
+
+        <item
+            android:id="@+id/nav_aboutUs"
+            android:icon="@drawable/ic_menu_about"
+            android:title="About Us" />
     </group>
 
 

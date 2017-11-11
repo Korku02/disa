@@ -11,7 +11,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -43,7 +46,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
     public static final String EMAIL = "email";
 
     //defining view objects
-    private EditText editTextEmail, editTextPassword, editTextUsername, editTextEntryNo;
+    private EditText editTextEmail, editTextPassword, editTextRePassword, editTextUsername, editTextEntryNo;
     private Button buttonSignup;
     private ProgressDialog progressDialog;
     private Spinner spinnerHostel;
@@ -60,8 +63,12 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
 
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextRePassword = (EditText) findViewById(R.id.editTextRePassword);
         editTextEntryNo = (EditText) findViewById(R.id.editTextEntryNo);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
@@ -82,6 +89,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         editTextEntryNo.setTypeface(mont_med);
         editTextUsername.setTypeface(mont_med);
         editTextPassword.setTypeface(mont_med);
+        editTextRePassword.setTypeface(mont_med);
         editTextEmail.setTypeface(mont_med);
         signupSubHeading.setTypeface(mont_med);
         buttonSignup.setTypeface(mont_med);
@@ -151,6 +159,17 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         checkWifi();
     }
 
+    private boolean validate() {
+        boolean temp=true;
+        String pass= editTextPassword.getText().toString();
+        String cpass= editTextRePassword.getText().toString();
+        if(!pass.equals(cpass)){
+            Toast.makeText(this,"Password Not matching",Toast.LENGTH_SHORT).show();
+            temp=false;
+        }
+        return temp;
+    }
+
     private void registerUser() {
 
         final String user_name = editTextUsername.getText().toString().trim();
@@ -158,6 +177,8 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         final String email = editTextEmail.getText().toString().trim();
         final String user_id = editTextEntryNo.getText().toString().trim();
         final String user_hostel = spinnerHostel.getSelectedItem().toString().trim();
+
+        validate();
 
         progressDialog.setMessage("Please Wait....");
         progressDialog.show();
@@ -223,10 +244,22 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
+
+    @Override
     public void onClick(View v) {
         if(v == buttonSignup){
             registerUser();
 
+        }
+        else if(v == textViewLogin){
+            startActivity(new Intent(this, userlogin.class));
+            finish();
         }
     }
 }
