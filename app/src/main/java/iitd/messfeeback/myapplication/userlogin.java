@@ -202,6 +202,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
 
                         try {
                             JSONObject jObj = new JSONObject(response);
@@ -211,7 +212,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             String name = jObj.getString("name");
                             String hostel = jObj.getString("hostel");
                             String id = jObj.getString("id");
-                            progressDialog.dismiss();
+
 
                             Toast.makeText(getApplicationContext(), "Succesfully LoggedIn", Toast.LENGTH_LONG).show();
                             System.out.println("Deepak Korku"+response);
