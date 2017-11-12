@@ -43,6 +43,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
 
 
+
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
     public static final String GRANT_TYPE = "grant_type";
@@ -251,7 +252,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        progressDialog.dismiss();
                         try {
                             String errorString = new String(error.networkResponse.data);
                             JSONObject errorObj = new JSONObject(errorString);
@@ -298,14 +299,16 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
             startActivity(new Intent(this, Signup.class));
         }
         if(view == textViewForgotPass){
-            finish();
-            startActivity(new Intent(this, Forgotpassword.class));
+
+            startActivity(new Intent(this, intermediate.class));
         }
 
         if(view == buttonSignIn){
             userLogin();
         }
     }
+
+
 
 
 }

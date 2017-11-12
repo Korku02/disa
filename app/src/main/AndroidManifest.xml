@@ -60,7 +60,8 @@
             android:name=".successfulFeedback"
             android:label="@string/title_activity_successful_feedback"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Forgotpassword"></activity>
+        <activity android:name=".Forgotpassword" />
+        <activity android:name=".intermediate"></activity>
     </application>
 
 </manifest>

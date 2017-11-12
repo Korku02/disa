@@ -178,68 +178,70 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         final String user_id = editTextEntryNo.getText().toString().trim();
         final String user_hostel = spinnerHostel.getSelectedItem().toString().trim();
 
-        validate();
+        if(validate()) {
 
-        progressDialog.setMessage("Please Wait....");
-        progressDialog.show();
+            progressDialog.setMessage("Please Wait....");
+            progressDialog.show();
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
 //                        Toast.makeText(Signup.this,response,Toast.LENGTH_LONG).show();
-                        Toast.makeText(Signup.this,"successfully registered",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Signup.this, "successfully registered", Toast.LENGTH_LONG).show();
 
-                        if(response !=null ){
-                            startActivity(new Intent(getApplicationContext(), userlogin.class));
-                            finish();
+                            if (response != null) {
+                                startActivity(new Intent(getApplicationContext(), userlogin.class));
+                                finish();
+                            }
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
 
-                        try {
-                            String errorString = new String(error.networkResponse.data);
-                            JSONObject errorObj = new JSONObject(errorString);
-                            String errorMessage = errorObj.getString("error");
-                            Toast.makeText(Signup.this,errorMessage,Toast.LENGTH_LONG ).show();
-                            progressDialog.dismiss();
-                        }
-                        catch (Exception e) {
-                            // JSON error
-                            e.printStackTrace();
-                            Toast.makeText(Signup.this,"Connection Error",Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
+                            try {
+                                String errorString = new String(error.networkResponse.data);
+                                JSONObject errorObj = new JSONObject(errorString);
+                                String errorMessage = errorObj.getString("error");
+                                Toast.makeText(Signup.this, errorMessage, Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                            } catch (Exception e) {
+                                // JSON error
+                                e.printStackTrace();
+                                Toast.makeText(Signup.this, "Connection Error", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
 
-                        }
+                            }
 
 //
 //                        Toast.makeText(Signup.this,"Please connect to wifi",Toast.LENGTH_LONG).show();
 
+                        }
+
                     }
-                }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put(USER_NAME,user_name);
-                params.put(PASSWORD,password);
-                params.put(EMAIL, email);
-                params.put(ID, user_id);
-                params.put(HOSTEL, user_hostel);
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put(USER_NAME, user_name);
+                    params.put(PASSWORD, password);
+                    params.put(EMAIL, email);
+                    params.put(ID, user_id);
+                    params.put(HOSTEL, user_hostel);
 
-                return params;
+                    return params;
 
-            }
+                }
 
-        };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+            };
 
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+        }
 
     }
 
