@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+
+    android:background="@color/casualBackground">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,24 +16,20 @@
     tools:showIn="@layout/activity_submit_rating"
     android:background="@color/casualBackground"
     android:padding="20dp"
+    android:layout_marginBottom="20dp"
     >
 
-
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cv"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
+        android:paddingBottom="10dp"
         android:background="@drawable/circlecard"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp"
         android:layout_centerHorizontal="true"
-        android:elevation="12dp"
-        >
+        android:elevation="8dp"
+        android:orientation="vertical">
 
 
         <TextView
@@ -43,30 +46,138 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/messType"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginTop="22dp"
             android:theme="@style/RatingBar" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/billgates"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"
+            />
 
         <EditText
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="50dp"
-            android:layout_below="@+id/ratingBar"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             android:ems="10"
-            android:hint="Your comment may help bringing justice to that mouse"
+            android:hint="Your Feedback"
             android:inputType="textMultiLine" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Rate the dishes individually"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="20sp"
+            android:textColor="@color/colorSteelGrey"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_marginLeft="10sp"
+                android:textSize="20sp"
+                android:text="1."/>
+            <RatingBar
+                android:id="@+id/fooditem1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:stepSize="0.2"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_marginLeft="10sp"
+                android:textSize="20sp"
+                android:text="2."/>
+            <RatingBar
+                android:id="@+id/fooditem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:stepSize="0.2"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_marginLeft="10sp"
+                android:textSize="20sp"
+                android:text="3."/>
+            <RatingBar
+                android:id="@+id/fooditem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:stepSize="0.2"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_marginLeft="10sp"
+                android:textSize="20sp"
+                android:text="4."/>
+            <RatingBar
+                android:id="@+id/fooditem4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:stepSize="0.2"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+
 
 
         <Button
             android:id="@+id/buttonSubmit"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/comment"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginTop="23dp"
             android:background="@drawable/roundbutton"
             android:paddingBottom="4dp"
@@ -78,7 +189,7 @@
 
 
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
+</ScrollView>

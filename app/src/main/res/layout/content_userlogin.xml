@@ -85,6 +85,15 @@
             android:textColor="@color/colorAluminium"
             android:layout_height="wrap_content"
             />
+        <TextView
+            android:text="Forgot password? Get a new one here"
+            android:id="@+id/textViewForgotPass"
+            android:textAlignment="center"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAluminium"
+            android:layout_height="wrap_content"
+            />
 
     </LinearLayout>
 </RelativeLayout>

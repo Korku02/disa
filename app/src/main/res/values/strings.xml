@@ -33,6 +33,9 @@
         The app is advantageous and convenient for the students and mess committee to improve the quaity of the food based on the feedbacks provided by the students.
         This is the beta version of our App to test its functionality.
     </string>
+    <string name="billgates">
+        We all need people who give us feedback. That\'s how we improve - Bill Gates
+    </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

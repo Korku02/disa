@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,7 +46,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
     public static final String EMAIL = "email";
 
     //defining view objects
-    private EditText editTextEmail, editTextPassword, editTextUsername, editTextEntryNo;
+    private EditText editTextEmail, editTextPassword, editTextRePassword, editTextUsername, editTextEntryNo;
     private Button buttonSignup;
     private ProgressDialog progressDialog;
     private Spinner spinnerHostel;
@@ -62,8 +63,12 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
 
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextRePassword = (EditText) findViewById(R.id.editTextRePassword);
         editTextEntryNo = (EditText) findViewById(R.id.editTextEntryNo);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
@@ -84,6 +89,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         editTextEntryNo.setTypeface(mont_med);
         editTextUsername.setTypeface(mont_med);
         editTextPassword.setTypeface(mont_med);
+        editTextRePassword.setTypeface(mont_med);
         editTextEmail.setTypeface(mont_med);
         signupSubHeading.setTypeface(mont_med);
         buttonSignup.setTypeface(mont_med);
@@ -153,6 +159,17 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         checkWifi();
     }
 
+    private boolean validate() {
+        boolean temp=true;
+        String pass= editTextPassword.getText().toString();
+        String cpass= editTextRePassword.getText().toString();
+        if(!pass.equals(cpass)){
+            Toast.makeText(this,"Password Not matching",Toast.LENGTH_SHORT).show();
+            temp=false;
+        }
+        return temp;
+    }
+
     private void registerUser() {
 
         final String user_name = editTextUsername.getText().toString().trim();
@@ -161,66 +178,70 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         final String user_id = editTextEntryNo.getText().toString().trim();
         final String user_hostel = spinnerHostel.getSelectedItem().toString().trim();
 
-        progressDialog.setMessage("Please Wait....");
-        progressDialog.show();
+        if(validate()) {
+
+            progressDialog.setMessage("Please Wait....");
+            progressDialog.show();
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
 //                        Toast.makeText(Signup.this,response,Toast.LENGTH_LONG).show();
-                        Toast.makeText(Signup.this,"successfully registered",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Signup.this, "successfully registered", Toast.LENGTH_LONG).show();
 
-                        if(response !=null ){
-                            startActivity(new Intent(getApplicationContext(), userlogin.class));
-                            finish();
+                            if (response != null) {
+                                startActivity(new Intent(getApplicationContext(), userlogin.class));
+                                finish();
+                            }
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
 
-                        try {
-                            String errorString = new String(error.networkResponse.data);
-                            JSONObject errorObj = new JSONObject(errorString);
-                            String errorMessage = errorObj.getString("error");
-                            Toast.makeText(Signup.this,errorMessage,Toast.LENGTH_LONG ).show();
-                            progressDialog.dismiss();
-                        }
-                        catch (Exception e) {
-                            // JSON error
-                            e.printStackTrace();
-                            Toast.makeText(Signup.this,"Connection Error",Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
+                            try {
+                                String errorString = new String(error.networkResponse.data);
+                                JSONObject errorObj = new JSONObject(errorString);
+                                String errorMessage = errorObj.getString("error");
+                                Toast.makeText(Signup.this, errorMessage, Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                            } catch (Exception e) {
+                                // JSON error
+                                e.printStackTrace();
+                                Toast.makeText(Signup.this, "Connection Error", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
 
-                        }
+                            }
 
 //
 //                        Toast.makeText(Signup.this,"Please connect to wifi",Toast.LENGTH_LONG).show();
 
+                        }
+
                     }
-                }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put(USER_NAME,user_name);
-                params.put(PASSWORD,password);
-                params.put(EMAIL, email);
-                params.put(ID, user_id);
-                params.put(HOSTEL, user_hostel);
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put(USER_NAME, user_name);
+                    params.put(PASSWORD, password);
+                    params.put(EMAIL, email);
+                    params.put(ID, user_id);
+                    params.put(HOSTEL, user_hostel);
 
-                return params;
+                    return params;
 
-            }
+                }
 
-        };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+            };
 
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+        }
 
     }
 

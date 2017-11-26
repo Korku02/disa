@@ -35,9 +35,10 @@
                         android:layout_height="wrap_content"
                         android:maxWidth="100dp"
                         android:layout_gravity="bottom|center"
-                        android:text="Give Feedback"
+                        android:text="Give  Feedback"
                         android:background="@drawable/roundbuttonwhite"
                         android:textColor="#ffffff"
+                        android:textSize="12sp"
                         tools:layout_editor_absoluteY="26dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:id="@+id/GiveFeedback"
@@ -59,6 +60,7 @@
                         android:maxWidth="100dp"
                         android:text="Mark Attendance"
                         android:textColor="#ffffff"
+                        android:textSize="12sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:layout_editor_absoluteY="26dp" />
 
@@ -71,6 +73,7 @@
                         android:text="Previous Feedbacks"
                         android:background="@drawable/roundbuttonwhite"
                         android:textColor="#ffffff"
+                        android:textSize="12sp"
                         tools:layout_editor_absoluteY="26dp"
                         android:id="@+id/PrevFeedback"
                         app:layout_constraintRight_toRightOf="parent"

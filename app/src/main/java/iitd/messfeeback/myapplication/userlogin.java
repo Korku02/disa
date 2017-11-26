@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
 
 
+
     public static  final String CLIENT_ID = "client_id";
     public static  final  String CLIENT_SECRET = "client_secret";
     public static final String GRANT_TYPE = "grant_type";
@@ -58,7 +60,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private Button buttonSignIn;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView textViewSignup;
+    private TextView textViewSignup, textViewForgotPass;
     private TextView textViewLogin;
     private  TextView  loginSubHeading;
     private Button wifi_button;
@@ -78,12 +80,16 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
 
+        //TO avoid keyboard opening
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonSignIn = (Button) findViewById(R.id.buttonSignin);
         textViewSignup  = (TextView) findViewById(R.id.textViewSignUp);
+        textViewForgotPass  = (TextView) findViewById(R.id.textViewForgotPass);
         textViewLogin = (TextView) findViewById(R.id.textViewLogin);
         loginSubHeading = (TextView) findViewById(R.id.loginSubHeading);
 
@@ -92,6 +98,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         //attaching click listener
         buttonSignIn.setOnClickListener(this);
         textViewSignup.setOnClickListener(this);
+        textViewForgotPass.setOnClickListener(this);
 
         Typeface mont_bold = Typeface.createFromAsset(getAssets(), "font/Montserrat-Bold.ttf");
         Typeface mont_med =Typeface.createFromAsset(getAssets(), "font/Montserrat-Medium.ttf");
@@ -196,17 +203,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         progressDialog.dismiss();
-//                        int status=json
-//                        System.out.println("korku"+response);
-//                        if(response.trim().equals("success")){
-//                            openProfile();
-//                        }else{
-//                            Toast.makeText(Login.this,response,Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-
 
                         try {
                             JSONObject jObj = new JSONObject(response);
@@ -218,17 +215,10 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             String id = jObj.getString("id");
 
 
-
-
                             Toast.makeText(getApplicationContext(), "Succesfully LoggedIn", Toast.LENGTH_LONG).show();
                             System.out.println("Deepak Korku"+response);
                             // Launch main activity
                             Intent intent = new Intent(userlogin.this, MainActivity.class);
-//                                intent.putExtra("email", email);
-//                                intent.putExtra("token", token);
-//                                intent.putExtra("name", name);
-//                                intent.putExtra("hostel", hostel);
-//                                intent.putExtra("id", id);
 
                             startActivity(intent);
                             finish();
@@ -262,7 +252,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        progressDialog.dismiss();
                         try {
                             String errorString = new String(error.networkResponse.data);
                             JSONObject errorObj = new JSONObject(errorString);
@@ -276,15 +266,6 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
                             Toast.makeText(userlogin.this,"Connection Error",Toast.LENGTH_LONG ).show();
 
                         }
-//                        System.out.println("error volley");
-//                        String connection_error = "com.android.volley.NoConnectionError: java.net.ConnectException: failed to connect to /10.17.5.66 (port 8080) after 2500ms: isConnected failed: ECONNREFUSED (Connection refused)";
-//                        if(error.toString().equals(connection_error)){
-//                            Toast.makeText(userlogin.this,"Please connect to IITD Wifi",Toast.LENGTH_LONG ).show();
-//                        }
-//                        else{
-//                            Toast.makeText(userlogin.this,"Please check username or password",Toast.LENGTH_LONG ).show();
-//                        }
-
                     }
                 }){
             @Override
@@ -303,12 +284,6 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         requestQueue.add(stringRequest);
     }
 
-//    private void openProfile(){
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra(EMAIL, email);
-//        startActivity(intent);
-//    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.
@@ -319,20 +294,21 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-
-
         if(view == textViewSignup){
             finish();
             startActivity(new Intent(this, Signup.class));
         }
+        if(view == textViewForgotPass){
+
+            startActivity(new Intent(this, intermediate.class));
+        }
 
         if(view == buttonSignIn){
-//            finish();
             userLogin();
-
-
         }
     }
+
+
 
 
 }
