@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    >
+
+
+
+    <ListView
+        android:id="@+id/menu_list_item"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="150dp"
+        android:padding="10dp"
+        >
+    </ListView>
+    <LinearLayout
+        android:id="@+id/NAvigator"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:background="#333333"
+        >
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvMoreRecords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Menu wise Feedback"
+                android:gravity="center"
+                android:height="50dp"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:text="Cancel"
+                android:background="@drawable/roundbuttonwhite"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                android:id="@+id/cancel_dialog"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:id="@+id/submit_menu_wise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/cancel_dialog"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="bottom|center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/roundbuttonwhite"
+                android:maxWidth="100dp"
+                android:text="submit"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                 />
+
+
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

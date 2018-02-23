@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
 
-    public static final String SUBMIT_URL = "http://10.17.5.66:8080/api/attendance/";
-    public static final String UPDATE_URL = "http://10.17.5.66:8080/api/getlastdata/";
+
 
 
     public static final String HOSTEL = "hostel";
@@ -184,7 +183,7 @@ public class MainActivity extends AppCompatActivity
 //        progressDialog.setMessage("Please wait....");
 //        progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, UPDATE_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.UPDATE_DATA_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -468,7 +467,7 @@ public class MainActivity extends AppCompatActivity
 
     private void submitAttendance(){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, SUBMIT_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.ATTENDANCE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

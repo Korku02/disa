@@ -40,7 +40,7 @@ import java.util.Map;
 public class userlogin extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String LOGIN_URL = "http://10.17.5.66:8080/login/";
+
 
 
 
@@ -72,8 +72,8 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
     private String email;
     private String password;
     private String grant_type = "client_credentials";
-    private String client_id = "5aR3S6Y3rFOJ0793DsmbLDLfYJHp7K9Wb0Pknegu";
-    private String client_secret = "msPUDtanIPnw4Y1daTPoE9WZrlIdnlhhqXybUpfJUcjvxy7BTH6KJLYucp10Ay13zG55AqVvs62AyLCeLklok4nDzHf4inORMHU2l5ybOpatnHrOFV9coDRCDF6yWOGZ";
+    private String client_id = "rpXeDUrHPgKvE7xnPu3ng5YyU80QDe3lGkQOfLJs";
+    private String client_secret = "1As6CBOYieCfJTseBFsJg8HohV3cLvLllpgPDpWFJ1qhAuN9vLfO4v5TgHT9r2fNT4Qm4bnvyuGNjF69DAY8gcmdondlUvX7Bi8QLAgWMr02iU0fkRmtCjCMZI3WGcKG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,7 +199,7 @@ public class userlogin extends AppCompatActivity implements View.OnClickListener
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

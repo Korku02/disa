@@ -2,8 +2,8 @@ package iitd.messfeeback.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,13 +24,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static iitd.messfeeback.myapplication.intermediate.FORGOT_PASS;
 import static iitd.messfeeback.myapplication.intermediate.USER_EMAIL;
 import static iitd.messfeeback.myapplication.intermediate.forgotemail;
 
 public class Forgotpassword extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String RESET_PASS = "http://10.17.5.66:8080/resetpassword/";
+    public static final String RESET_PASS = "http://192.168.43.184:8080/resetpassword/";
 
     public static final String NEW_PASSWORD="new_password";
     public static final String FORGET_OTP="forget_otp";
@@ -93,7 +92,7 @@ public class Forgotpassword extends AppCompatActivity implements View.OnClickLis
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
-        StringRequest forgotpass = new StringRequest(Request.Method.POST, FORGOT_PASS,
+        StringRequest forgotpass = new StringRequest(Request.Method.POST, Config.FORGOT_PASS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

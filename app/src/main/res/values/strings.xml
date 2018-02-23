@@ -62,4 +62,5 @@
     <string name="title_activity_successfull_feedback">successfullFeedback</string>
     <string name="title_activity_successful_feedback">successfulFeedback</string>
     <string name="title_activity_wifi_connect">wifiConnect</string>
+    <string name="title_activity_submit_ratings">submit_ratings</string>
 </resources>

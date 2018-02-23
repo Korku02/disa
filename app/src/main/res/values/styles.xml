@@ -20,6 +20,7 @@
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
     </style>
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimaryDark</item>

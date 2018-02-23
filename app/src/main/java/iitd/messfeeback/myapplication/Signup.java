@@ -36,7 +36,7 @@ import java.util.Map;
 public class Signup extends AppCompatActivity implements View.OnClickListener {
 
 
-    public static final String REGISTER_URL = "http://10.17.5.66:8080/register/";
+
 
 
     public static final String USER_NAME = "user_name";
@@ -184,7 +184,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
             progressDialog.show();
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.REGISTER_URL,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -205,6 +205,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                             try {
                                 String errorString = new String(error.networkResponse.data);
                                 JSONObject errorObj = new JSONObject(errorString);
+                                System.out.println(errorString);
                                 String errorMessage = errorObj.getString("error");
                                 Toast.makeText(Signup.this, errorMessage, Toast.LENGTH_LONG).show();
                                 progressDialog.dismiss();

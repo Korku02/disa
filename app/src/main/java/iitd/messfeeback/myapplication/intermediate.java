@@ -26,7 +26,7 @@ import java.util.Map;
 public class intermediate extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EMAIL = "email";
-    public static final String FORGOT_PASS = "http://10.17.5.66:8080/forgotpasswordemail/";
+
 
     public static final String USER_EMAIL="user_email";
 
@@ -56,7 +56,7 @@ public class intermediate extends AppCompatActivity implements View.OnClickListe
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
-        StringRequest forgotpass = new StringRequest(Request.Method.POST, FORGOT_PASS,
+        StringRequest forgotpass = new StringRequest(Request.Method.POST, Config.FORGOT_PASS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
